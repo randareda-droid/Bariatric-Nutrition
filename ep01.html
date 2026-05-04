@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>جراحة السمنة — ماذا تحتاج أن تعرف؟</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#2E7D6B;
+  --green-light:#E8F5F1;
+  --green-mid:#3A9E85;
+  --green-dark:#1C5C4C;
+  --amber:#7A4F0D;
+  --amber-bg:#FEF6E8;
+  --red:#8B2C2C;
+  --red-bg:#FDF1F1;
+  --text:#1A1A1A;
+  --muted:#5E6E7A;
+  --border:#E0E8E5;
+  --bg:#F5F7F6;
+  --white:#FFFFFF;
+  --r:12px;
+  --rs:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px}
+body.en{font-family:'Lato',sans-serif;direction:ltr}
+
+/* HERO */
+.hero{background:var(--green);color:white;padding:2rem 1.25rem 1.5rem;text-align:center}
+.ep-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:0.75rem}
+.hero h1{font-size:clamp(1.45rem,5vw,1.9rem);font-weight:700;line-height:1.3;margin-bottom:0.5rem}
+.hero-hook{font-size:14px;color:rgba(255,255,255,0.8);margin-bottom:1.25rem;line-height:1.6;max-width:400px;margin-left:auto;margin-right:auto}
+.lang-row{display:flex;justify-content:center;gap:6px}
+.lang-btn{padding:6px 20px;border-radius:30px;border:1.5px solid rgba(255,255,255,0.35);background:transparent;color:rgba(255,255,255,0.75);font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.lang-btn.active{background:white;color:var(--green);border-color:white}
+
+/* TABS */
+.tabs{display:flex;background:white;border-bottom:2px solid var(--border);overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:50}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:1;min-width:70px;padding:12px 6px;text-align:center;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.2s;font-family:inherit;white-space:nowrap}
+.tab.active{color:var(--green);border-bottom-color:var(--green)}
+
+/* CONTENT */
+.content{max-width:600px;margin:0 auto;padding:1.25rem}
+.section{display:none}.section.active{display:block;animation:up 0.2s ease}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* TEXT */
+.intro-text{font-size:15px;color:var(--text);line-height:1.8;background:white;border-radius:var(--r);padding:1.1rem 1.25rem;border:1px solid var(--border);margin-bottom:0.9rem}
+.intro-text strong{color:var(--green)}
+.highlight-box{background:var(--green-light);border:1px solid #A8D5CA;border-radius:var(--rs);padding:0.9rem 1.1rem;font-size:14px;color:var(--green-dark);margin-bottom:0.9rem;line-height:1.7}
+.highlight-box .icon{font-size:16px;margin-inline-end:6px}
+
+/* RULE CARDS */
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:0.9rem}
+.rule-card{background:white;border:1px solid var(--border);border-radius:var(--rs);padding:1rem;text-align:center}
+.rule-emoji{font-size:26px;margin-bottom:5px}
+.rule-title{font-size:13px;font-weight:700;color:var(--green);margin-bottom:3px}
+.rule-desc{font-size:12px;color:var(--muted);line-height:1.45}
+.golden{display:flex;align-items:flex-start;gap:8px;background:var(--amber-bg);border:1px solid #E8C878;border-radius:var(--rs);padding:10px 14px;font-size:13px;color:var(--amber);font-weight:500;line-height:1.55;margin-bottom:0.9rem}
+
+/* TYPES */
+.type-cards{display:flex;flex-direction:column;gap:8px;margin-bottom:0.9rem}
+.type-card{background:white;border:1px solid var(--border);border-radius:var(--rs);overflow:hidden}
+.type-header{display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer}
+.type-emoji{font-size:24px;flex-shrink:0}
+.type-body{flex:1}
+.type-name{font-size:14px;font-weight:700;color:var(--text)}
+.type-sub{font-size:12px;color:var(--green);font-weight:600}
+.type-arrow{font-size:11px;color:var(--muted);transition:transform 0.2s;flex-shrink:0}
+.type-card.open .type-arrow{transform:rotate(180deg)}
+.type-detail{display:none;padding:0 14px 12px;font-size:13px;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.type-card.open .type-detail{display:block}
+
+/* STAGES */
+.stage-tabs{display:flex;gap:0;margin-bottom:8px;border-radius:var(--rs);overflow:hidden;border:1px solid var(--border)}
+.stage-tab{flex:1;padding:8px 4px;text-align:center;background:white;cursor:pointer;border-right:1px solid var(--border);font-size:11px;font-weight:700;color:var(--muted);transition:all 0.18s;font-family:inherit;border-top:none;border-left:none;border-bottom:none}
+.stage-tab:last-child{border-right:none}
+.stage-tab.active{background:var(--green);color:white}
+.stage-box{background:var(--green-light);border:1px solid #A8D5CA;border-radius:var(--rs);padding:1rem 1.1rem;margin-bottom:0.9rem}
+.stage-when{font-size:11px;font-weight:700;color:var(--green-mid);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.stage-name{font-size:15px;font-weight:700;color:var(--green-dark);margin-bottom:6px}
+.stage-list{font-size:13px;color:var(--text);line-height:1.9}
+.stage-tip{margin-top:8px;font-size:12px;color:var(--green);background:rgba(255,255,255,0.65);border-radius:6px;padding:7px 10px;font-weight:500}
+
+/* FOOD GRID */
+.food-intro{font-size:14px;color:var(--muted);margin-bottom:0.75rem;padding:8px 12px;background:white;border-radius:var(--rs);border:1px solid var(--border)}
+.food-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:0.9rem}
+.food-card{background:white;border:1px solid var(--border);border-radius:var(--rs);padding:1rem 0.9rem;text-align:center;cursor:pointer;transition:all 0.18s}
+.food-card:hover,.food-card.open{border-color:var(--green-mid);background:var(--green-light)}
+.food-emo{font-size:30px;margin-bottom:5px}
+.food-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
+.food-tag{font-size:11px;color:var(--green);font-weight:600}
+.food-tip{display:none;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);line-height:1.5;text-align:start}
+.food-card.open .food-tip{display:block}
+
+/* WARNINGS */
+.warn-card{background:white;border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.1rem;margin-bottom:0.75rem}
+.warn-head{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.warn-badge{width:32px;height:32px;border-radius:50%;background:var(--red-bg);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.warn-title{font-size:14px;font-weight:700;color:var(--red)}
+.warn-body{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:7px}
+.warn-solution{background:var(--green-light);border-radius:var(--rs);padding:7px 11px;font-size:12px;color:var(--green-dark);font-weight:500}
+
+/* QUIZ */
+.quiz-card{background:white;border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;margin-bottom:0.9rem}
+.qprog{height:3px;background:var(--border);border-radius:2px;margin-bottom:1rem;overflow:hidden}
+.qprog-fill{height:100%;background:var(--green);border-radius:2px;transition:width 0.3s}
+.qtext{font-size:15px;font-weight:700;color:var(--text);margin-bottom:1rem;line-height:1.5}
+.qopts{display:flex;flex-direction:column;gap:7px}
+.qopt{padding:11px 14px;border-radius:var(--rs);border:1.5px solid var(--border);font-size:13px;cursor:pointer;text-align:start;font-family:inherit;background:var(--bg);color:var(--text);transition:all 0.16s}
+.qopt:hover{border-color:var(--green-mid)}
+.qopt.ok{background:var(--green-light);border-color:var(--green-mid);color:var(--green-dark);font-weight:700}
+.qopt.no{background:var(--red-bg);border-color:var(--red);color:var(--red)}
+.qfb{margin-top:10px;padding:9px 13px;border-radius:var(--rs);font-size:13px;line-height:1.55;display:none}
+.qfb.show{display:block}
+.qfb.ok{background:var(--green-light);color:var(--green-dark)}
+.qfb.no{background:var(--red-bg);color:var(--red)}
+.qfoot{display:flex;justify-content:space-between;align-items:center;margin-top:1rem}
+.qcount{font-size:12px;color:var(--muted)}
+.qbtn{padding:9px 24px;border-radius:30px;border:2px solid var(--green);color:var(--green);background:transparent;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.18s}
+.qbtn:hover,.qbtn.primary{background:var(--green);color:white}
+.score-box{background:var(--green-light);border:1px solid #A8D5CA;border-radius:var(--r);padding:2rem 1.5rem;text-align:center;display:none}
+.score-num{font-size:3.5rem;font-weight:700;color:var(--green);line-height:1}
+.score-of{font-size:13px;color:var(--green-mid);margin-top:4px}
+.score-msg{font-size:14px;color:var(--muted);margin-top:12px;line-height:1.6}
+
+/* SHARE */
+.share-box{background:white;border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;text-align:center;margin-bottom:0.9rem}
+.share-title{font-size:16px;font-weight:700;margin-bottom:4px}
+.share-sub{font-size:13px;color:var(--muted);margin-bottom:1.1rem;line-height:1.55}
+.share-btns{display:flex;flex-direction:column;gap:7px}
+.sbtn{display:flex;align-items:center;justify-content:center;gap:9px;padding:12px;border-radius:var(--rs);border:none;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;text-decoration:none;transition:opacity 0.18s}
+.sbtn:hover{opacity:0.86}
+.s-wa{background:#25D366;color:white}
+.s-li{background:#0A66C2;color:white}
+.s-cp{background:var(--green-light);color:var(--green-dark);border:1px solid #A8D5CA}
+.disc{font-size:11px;color:var(--muted);text-align:center;padding:0.75rem 1rem 1.5rem;line-height:1.6}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="ep-label" id="ep-label">الحلقة الأولى — جراحة السمنة</div>
+  <h1 id="hero-h1">جراحة السمنة — ماذا تحتاج أن تعرف؟</h1>
+  <p class="hero-hook" id="hero-hook">سؤال يطرحه كل من يفكر في الجراحة. الإجابة هنا — بوضوح وبدون تعقيد.</p>
+  <div class="lang-row">
+    <button class="lang-btn active" onclick="setLang('ar',this)">العربية</button>
+    <button class="lang-btn" onclick="setLang('en',this)">English</button>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="show('intro',this)"><span id="t1">☕ مقدمة</span></button>
+  <button class="tab" onclick="show('types',this)"><span id="t2">🔧 أنواع الجراحة</span></button>
+  <button class="tab" onclick="show('nutrition',this)"><span id="t3">🥗 التغذية</span></button>
+  <button class="tab" onclick="show('warnings',this)"><span id="t4">⚠️ تحذيرات</span></button>
+  <button class="tab" onclick="show('quiz',this)"><span id="t5">❓ اختبر نفسك</span></button>
+</div>
+
+<div class="content">
+
+<!-- ── INTRO ── -->
+<div class="section active" id="intro">
+
+  <div class="intro-text" id="intro-p1">
+    جراحة السمنة ليست حلاً سهلاً — وليست عملية تجميلية. هي تدخل طبي معتمد عالمياً، يساعد الأشخاص الذين جربوا كل شيء ولم يُجدِ نفعاً. <strong>المعدة تتغير. الهرمونات تتغير. الحياة تتغير.</strong>
+  </div>
+
+  <div class="rules-grid">
+    <div class="rule-card">
+      <div class="rule-emoji">📏</div>
+      <div class="rule-title" id="r1t">BMI فوق 35</div>
+      <div class="rule-desc" id="r1d">مع وجود أمراض مصاحبة كالسكري أو الضغط</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-emoji">⏳</div>
+      <div class="rule-title" id="r2t">بعد فشل الحمية</div>
+      <div class="rule-desc" id="r2d">الجراحة تأتي بعد تجربة الأساليب التقليدية</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-emoji">💊</div>
+      <div class="rule-title" id="r3t">التزام مدى الحياة</div>
+      <div class="rule-desc" id="r3d">مكملات، تحاليل، ومتابعة منتظمة مع الطبيب</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-emoji">🏥</div>
+      <div class="rule-title" id="r4t">فريق طبي متخصص</div>
+      <div class="rule-desc" id="r4d">جراح، أخصائي تغذية، وطبيب متابعة</div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <span class="icon">💡</span><span id="what-changes-lbl"><strong>ماذا تُغيِّر الجراحة فعلاً؟</strong></span>
+    <div id="what-changes" style="margin-top:5px">المعدة تصبح أصغر بكثير. هرمون الجوع (الغريلين) ينخفض بشكل ملحوظ — كثيرون يقولون إنهم "نسوا الأكل". حساسية الإنسولين تتحسن أحياناً قبل أن ينزل الوزن أصلاً.</div>
+  </div>
+
+  <div class="golden">
+    <span>📌</span>
+    <span id="golden">القاعدة الذهبية: إذا كنت تفكر في الجراحة — أول خطوة هي تقييم طبي شامل مع جراح متخصص. لا قرار بدون تقييم.</span>
+  </div>
+
+</div>
+
+<!-- ── TYPES ── -->
+<div class="section" id="types">
+
+  <div class="food-intro" id="types-intro">اضغط على أي نوع لمعرفة التفاصيل</div>
+
+  <div class="type-cards">
+
+    <div class="type-card" onclick="this.classList.toggle('open')">
+      <div class="type-header">
+        <div class="type-emoji">✂️</div>
+        <div class="type-body">
+          <div class="type-name" id="ty1n">قص المعدة — Sleeve Gastrectomy</div>
+          <div class="type-sub" id="ty1sub">الأكثر شيوعاً عالمياً</div>
+        </div>
+        <span class="type-arrow">▼</span>
+      </div>
+      <div class="type-detail" id="ty1d">يُزال 80% من المعدة ويبقى جزء صغير بشكل أنبوب. لا تغيير في مسار الأمعاء. مخاطر نقص التغذية أقل نسبياً. مناسب لمعظم المرضى كخيار أول.</div>
+    </div>
+
+    <div class="type-card" onclick="this.classList.toggle('open')">
+      <div class="type-header">
+        <div class="type-emoji">🔀</div>
+        <div class="type-body">
+          <div class="type-name" id="ty2n">تحويل مسار المعدة — Roux-en-Y Bypass</div>
+          <div class="type-sub" id="ty2sub">الأقوى في علاج السكري</div>
+        </div>
+        <span class="type-arrow">▼</span>
+      </div>
+      <div class="type-detail" id="ty2d">معدة صغيرة جداً + تغيير مسار الأمعاء. فقدان وزن أسرع وأعمق. يستلزم متابعة مكثفة للفيتامينات مدى الحياة — خاصة B12 والحديد والكالسيوم.</div>
+    </div>
+
+    <div class="type-card" onclick="this.classList.toggle('open')">
+      <div class="type-header">
+        <div class="type-emoji">💫</div>
+        <div class="type-body">
+          <div class="type-name" id="ty3n">تحويل المسار الصغير — Mini Bypass</div>
+          <div class="type-sub" id="ty3sub">أبسط من الـ Bypass الكلاسيكي</div>
+        </div>
+        <span class="type-arrow">▼</span>
+      </div>
+      <div class="type-detail" id="ty3d">نتائج مشابهة لـ Bypass بتعقيد جراحي أقل. ينتشر تدريجياً في المراكز المتخصصة. يحتاج كذلك متابعة غذائية مستمرة.</div>
+    </div>
+
+    <div class="type-card" onclick="this.classList.toggle('open')">
+      <div class="type-header">
+        <div class="type-emoji">🔬</div>
+        <div class="type-body">
+          <div class="type-name" id="ty4n">تحويل الاثني عشر — SADI-S</div>
+          <div class="type-sub" id="ty4sub">للسمنة الشديدة جداً (BMI 50+)</div>
+        </div>
+        <span class="type-arrow">▼</span>
+      </div>
+      <div class="type-detail" id="ty4d">أقوى العمليات في فقدان الوزن. خطر نقص التغذية الأعلى من بين كل الأنواع. يستلزم متابعة صارمة جداً ومدى الحياة بدون استثناء.</div>
+    </div>
+
+  </div>
+
+  <div class="golden">
+    <span>📌</span>
+    <span id="types-note">نوع الجراحة المناسب يقرره الجراح بناءً على وزنك، أمراضك، وتاريخك الطبي. لا يوجد نوع أفضل بشكل مطلق.</span>
+  </div>
+
+</div>
+
+<!-- ── NUTRITION ── -->
+<div class="section" id="nutrition">
+
+  <div class="intro-text" id="nutr-p">
+    التغذية بعد الجراحة <strong>ليست حمية اختيارية</strong> — هي بروتوكول طبي. الالتزام به يحمي صحتك ويضمن نجاح العملية لسنوات.
+  </div>
+
+  <div class="food-intro" id="stage-lbl">اضغط على مرحلتك لمعرفة ما تأكله</div>
+
+  <div class="stage-tabs" id="stage-tabs">
+    <button class="stage-tab active" onclick="setStage(0,this)" id="sp0">أسبوع 1–2</button>
+    <button class="stage-tab" onclick="setStage(1,this)" id="sp1">أسبوع 3–4</button>
+    <button class="stage-tab" onclick="setStage(2,this)" id="sp2">أسبوع 5–6</button>
+    <button class="stage-tab" onclick="setStage(3,this)" id="sp3">أسبوع 7–8</button>
+    <button class="stage-tab" onclick="setStage(4,this)" id="sp4">شهر 3+</button>
+  </div>
+
+  <div class="stage-box">
+    <div class="stage-when" id="sw"></div>
+    <div class="stage-name" id="sn"></div>
+    <div class="stage-list" id="sl"></div>
+    <div class="stage-tip" id="st"></div>
+  </div>
+
+  <div class="food-intro" id="rules-lbl">القواعد الذهبية — طوال الحياة</div>
+
+  <div class="rules-grid">
+    <div class="rule-card">
+      <div class="rule-emoji">🥩</div>
+      <div class="rule-title" id="rl1">البروتين أولاً</div>
+      <div class="rule-desc" id="rl1d">في كل وجبة — قبل الخضار والنشويات</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-emoji">💧</div>
+      <div class="rule-title" id="rl2">لا شرب مع الأكل</div>
+      <div class="rule-desc" id="rl2d">انتظر 30 دقيقة بعد كل وجبة</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-emoji">💊</div>
+      <div class="rule-title" id="rl3">مكملات يومياً</div>
+      <div class="rule-desc" id="rl3d">B12، حديد، كالسيوم، فيتامين D — مدى الحياة</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-emoji">🩸</div>
+      <div class="rule-title" id="rl4">تحاليل كل 6 أشهر</div>
+      <div class="rule-desc" id="rl4d">حديد، فيريتين، B12، كالسيوم، بروتين كلي</div>
+    </div>
+  </div>
+
+  <div class="food-intro" id="foods-lbl">اضغط على أي طعام لمعرفة طريقة تحضيره</div>
+
+  <div class="food-grid">
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <div class="food-emo">🥚</div>
+      <div class="food-name" id="f1n">البيض</div>
+      <div class="food-tag" id="f1t">بروتين ممتاز</div>
+      <div class="food-tip" id="f1d">مسلوق ناعم أو مخفوق — أفضل خيار في مرحلة الطعام الطري. تجنب القلي في الأشهر الأولى.</div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <div class="food-emo">🍗</div>
+      <div class="food-name" id="f2n">صدر الدجاج</div>
+      <div class="food-tag" id="f2t">بروتين عالٍ</div>
+      <div class="food-tip" id="f2d">مسلوق ومهروس في مرحلة الهرس. مقطع صغيراً جداً مع مضغ ببطء في المرحلة الطرية.</div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <div class="food-emo">🐟</div>
+      <div class="food-name" id="f3n">سمك أبيض</div>
+      <div class="food-tag" id="f3t">هضم سهل</div>
+      <div class="food-tip" id="f3d">مطبوخ على البخار أو مسلوق. سهل الهضم وطري بطبعه — مثالي من أسبوع 5.</div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <div class="food-emo">🥛</div>
+      <div class="food-name" id="f4n">زبادي يوناني</div>
+      <div class="food-tag" id="f4t">بروتين + بروبيوتيك</div>
+      <div class="food-tip" id="f4d">اختر النوع الخالي من الدسم وبدون سكر مضاف. ملعقتان كبيرتان كافيتان في البداية.</div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <div class="food-emo">🫘</div>
+      <div class="food-name" id="f5n">العدس المهروس</div>
+      <div class="food-tag" id="f5t">بروتين نباتي</div>
+      <div class="food-tip" id="f5d">مطبوخ جيداً ومهروس ناعماً. ابدأ بكميات صغيرة — قد يسبب انتفاخاً في البداية لبعض المرضى.</div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <div class="food-emo">🥑</div>
+      <div class="food-name" id="f6n">الأفوكادو</div>
+      <div class="food-tag" id="f6t">دهون صحية</div>
+      <div class="food-tip" id="f6d">ربع حبة مهروسة — مصدر ممتاز للدهون الصحية. لكن كميته تُحسب لأنه عالي السعرات.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── WARNINGS ── -->
+<div class="section" id="warnings">
+
+  <div class="warn-card">
+    <div class="warn-head"><div class="warn-badge">⚠️</div><div class="warn-title" id="w1t">متلازمة الإغراق — Dumping Syndrome</div></div>
+    <div class="warn-body" id="w1b">دوخة، غثيان، وتعرق خلال 30 دقيقة من الأكل. تحدث عند تناول السكر أو الدهون بكميات كبيرة. تؤلم بشكل واضح وقد تُجبرك على الاستلقاء.</div>
+    <div class="warn-solution" id="w1s">✅ الحل: تجنب السكر والحلويات تماماً — خاصة في السنة الأولى</div>
+  </div>
+
+  <div class="warn-card">
+    <div class="warn-head"><div class="warn-badge">⚠️</div><div class="warn-title" id="w2t">نقص البروتين</div></div>
+    <div class="warn-body" id="w2b">تساقط الشعر، ضعف عام، وفقدان عضلي. من أكثر المشاكل شيوعاً بعد الجراحة — وسببها الأساسي الاكتفاء بكميات قليلة جداً من الطعام دون الانتباه للبروتين.</div>
+    <div class="warn-solution" id="w2s">✅ الهدف: 60–80 جرام بروتين يومياً — البروتين أولاً في كل وجبة</div>
+  </div>
+
+  <div class="warn-card">
+    <div class="warn-head"><div class="warn-badge">⚠️</div><div class="warn-title" id="w3t">الجفاف</div></div>
+    <div class="warn-body" id="w3b">المعدة الصغيرة تجعل الشرب بكميات كبيرة صعباً — وهذا يعرّض المرضى للجفاف بشكل أسرع من غيرهم. يظهر بالصداع، الإرهاق، والغثيان.</div>
+    <div class="warn-solution" id="w3s">✅ الهدف: 1.5 لتر ماء يومياً — رشفة رشفة على مدار اليوم</div>
+  </div>
+
+  <div class="warn-card">
+    <div class="warn-head"><div class="warn-badge">⚠️</div><div class="warn-title" id="w4t">نقص الفيتامينات والمعادن</div></div>
+    <div class="warn-body" id="w4b">بعد بعض أنواع الجراحة — خاصة Bypass — يضعف امتصاص الحديد وB12 والكالسيوم من الطعام وحده. النقص يظهر ببطء وقد يمضي أشهر قبل أن تشعر بأعراضه.</div>
+    <div class="warn-solution" id="w4s">✅ تحليل دم شامل كل 3–6 أشهر — ولا تتوقف عن المكملات بدون إذن طبيب</div>
+  </div>
+
+  <div class="golden" style="margin-top:0.25rem">
+    <span>📌</span>
+    <span id="warn-note">إذا أجريت جراحة Bypass أو SADI-S — المتابعة مع أخصائي تغذية متخصص في السمنة ليست خياراً. هي جزء من العلاج.</span>
+  </div>
+
+</div>
+
+<!-- ── QUIZ ── -->
+<div class="section" id="quiz">
+  <div class="quiz-card" id="quiz-box">
+    <div class="qprog"><div class="qprog-fill" id="qfill" style="width:20%"></div></div>
+    <div class="qtext" id="qtext"></div>
+    <div class="qopts" id="qopts"></div>
+    <div class="qfb" id="qfb"></div>
+    <div class="qfoot">
+      <span class="qcount" id="qcount"></span>
+      <button class="qbtn primary" id="qnext" onclick="nextQ()"></button>
+    </div>
+  </div>
+  <div class="score-box" id="score-box">
+    <div class="score-num" id="snum"></div>
+    <div class="score-of" id="sof"></div>
+    <div class="score-msg" id="smsg"></div>
+    <button class="qbtn primary" style="margin-top:1.25rem" onclick="resetQuiz()" id="retry"></button>
+  </div>
+</div>
+
+<!-- SHARE -->
+<div class="share-box">
+  <div class="share-title" id="sh-title">🔗 شارك هذا الدليل</div>
+  <div class="share-sub" id="sh-sub">للأطباء: أرسله لمرضاك قبل الجراحة أو بعدها<br>لمن يفكر في الجراحة: شاركه مع عائلتك</div>
+  <div class="share-btns">
+    <a class="sbtn s-wa" id="wa-link" href="#" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.523 5.852L0 24l6.302-1.497A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.893 0-3.67-.52-5.187-1.424l-.371-.22-3.741.888.938-3.64-.243-.383A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      <span id="wa-lbl">واتساب</span>
+    </a>
+    <a class="sbtn s-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https://randareda-droid.github.io/Patient-Guide-/bariatric-ep01.html" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <span id="li-lbl">LinkedIn</span>
+    </a>
+    <button class="sbtn s-cp" onclick="copyLink(this)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+      <span id="cp-lbl">نسخ الرابط</span>
+    </button>
+  </div>
+</div>
+
+<div class="disc" id="disc">هذا الدليل للتوعية العامة فقط — لا يُغني عن استشارة الطبيب المعالج والفريق الطبي المتخصص</div>
+
+</div>
+
+<script>
+var lang='ar', qIdx=0, qScore=0, answered=false, curStage=0;
+
+var stages={
+  ar:[
+    {w:'الأسبوع 1–2 بعد العملية',n:'مرحلة السوائل الصافية',l:'ماء · مرق خالٍ من الدهون · عصير مخفف بدون سكر · شاي خفيف',t:'🎯 الهدف الوحيد: الترطيب. رشفة صغيرة كل 15 دقيقة. لا بروتين بعد.'},
+    {w:'الأسبوع 3–4',n:'مرحلة السوائل الكاملة',l:'حليب قليل الدسم · زبادي سائل · شوربة ناعمة مصفاة · بروتين بودر في الحليب',t:'🎯 ابدأ تتبع البروتين — استهدف 40–60 جرام يومياً في هذه المرحلة.'},
+    {w:'الأسبوع 5–6',n:'مرحلة الطعام المهروس',l:'دجاج مسلوق مهروس · سمك مطحون · بيض مخفوق · خضار مهروسة ناعمة · زبادي يوناني',t:'🎯 قوام كريمة الشوربة دائماً. البروتين أولاً في كل وجبة.'},
+    {w:'الأسبوع 7–8',n:'مرحلة الطعام الطري',l:'سمك مسلوق طري · بيض مطبوخ جيداً · جبنة طرية · خضار مطبوخة · أفوكادو مهروس',t:'🎯 مضغ ببطء جداً — 20 مرة لكل لقمة. لا عجلة في هذه المرحلة.'},
+    {w:'الشهر 3 فما بعد',n:'الطعام الطبيعي المعدَّل',l:'طعام طبيعي مع تحكم في الكمية · البروتين دائماً أولاً · تجنب السكر والمقليات',t:'⚠️ المعدة أكبر الآن لكن البروتوكول لا يتغير. تجنب السكر مدى الحياة.'}
+  ],
+  en:[
+    {w:'Week 1–2 after surgery',n:'Clear fluids only',l:'Water · fat-free broth · diluted juice with no sugar · light herbal tea',t:'🎯 One goal only: stay hydrated. Sip slowly every 15 minutes. No protein yet.'},
+    {w:'Week 3–4',n:'Full fluids stage',l:'Low-fat milk · liquid yogurt · smooth strained soup · protein powder in milk',t:'🎯 Start tracking protein — aim for 40–60 grams a day at this stage.'},
+    {w:'Week 5–6',n:'Puréed food stage',l:'Boiled puréed chicken · minced white fish · scrambled eggs · smooth mashed vegetables · Greek yogurt',t:'🎯 Think smooth cream-soup texture throughout. Protein first at every meal.'},
+    {w:'Week 7–8',n:'Soft food stage',l:'Soft boiled fish · well-cooked eggs · soft cheese · cooked vegetables · mashed avocado',t:'🎯 Chew slowly — 20 times per bite. There is no rush at this stage.'},
+    {w:'Month 3 onwards',n:'Modified regular food',l:'Normal food with careful portions · protein always first · avoid sugar and fried foods',t:'⚠️ Your stomach is larger now but the rules stay the same. Avoid sugar for life.'}
+  ]
+};
+
+var T={
+  ar:{
+    'ep-label':'الحلقة الأولى — جراحة السمنة',
+    'hero-h1':'جراحة السمنة — ماذا تحتاج أن تعرف؟',
+    'hero-hook':'سؤال يطرحه كل من يفكر في الجراحة. الإجابة هنا — بوضوح وبدون تعقيد.',
+    t1:'☕ مقدمة',t2:'🔧 أنواع الجراحة',t3:'🥗 التغذية',t4:'⚠️ تحذيرات',t5:'❓ اختبر نفسك',
+    'intro-p1':'جراحة السمنة ليست حلاً سهلاً — وليست عملية تجميلية. هي تدخل طبي معتمد عالمياً، يساعد الأشخاص الذين جربوا كل شيء ولم يُجدِ نفعاً. <strong>المعدة تتغير. الهرمونات تتغير. الحياة تتغير.</strong>',
+    r1t:'BMI فوق 35',r1d:'مع وجود أمراض مصاحبة كالسكري أو الضغط',
+    r2t:'بعد فشل الحمية',r2d:'الجراحة تأتي بعد تجربة الأساليب التقليدية',
+    r3t:'التزام مدى الحياة',r3d:'مكملات، تحاليل، ومتابعة منتظمة مع الطبيب',
+    r4t:'فريق طبي متخصص',r4d:'جراح، أخصائي تغذية، وطبيب متابعة',
+    'what-changes-lbl':'<strong>ماذا تُغيِّر الجراحة فعلاً؟</strong>',
+    'what-changes':'المعدة تصبح أصغر بكثير. هرمون الجوع (الغريلين) ينخفض بشكل ملحوظ — كثيرون يقولون إنهم "نسوا الأكل". حساسية الإنسولين تتحسن أحياناً قبل أن ينزل الوزن أصلاً.',
+    golden:'القاعدة الذهبية: إذا كنت تفكر في الجراحة — أول خطوة هي تقييم طبي شامل مع جراح متخصص. لا قرار بدون تقييم.',
+    'types-intro':'اضغط على أي نوع لمعرفة التفاصيل',
+    ty1n:'قص المعدة — Sleeve Gastrectomy',ty1sub:'الأكثر شيوعاً عالمياً',ty1d:'يُزال 80% من المعدة ويبقى جزء صغير بشكل أنبوب. لا تغيير في مسار الأمعاء. مخاطر نقص التغذية أقل نسبياً. مناسب لمعظم المرضى.',
+    ty2n:'تحويل مسار المعدة — Roux-en-Y Bypass',ty2sub:'الأقوى في علاج السكري',ty2d:'معدة صغيرة جداً + تغيير مسار الأمعاء. فقدان وزن أسرع وأعمق. يستلزم متابعة مكثفة للفيتامينات مدى الحياة.',
+    ty3n:'تحويل المسار الصغير — Mini Bypass',ty3sub:'أبسط من الـ Bypass الكلاسيكي',ty3d:'نتائج مشابهة لـ Bypass بتعقيد جراحي أقل. ينتشر تدريجياً في المراكز المتخصصة.',
+    ty4n:'تحويل الاثني عشر — SADI-S',ty4sub:'للسمنة الشديدة جداً (BMI 50+)',ty4d:'أقوى العمليات في فقدان الوزن. خطر نقص التغذية الأعلى من بين كل الأنواع.',
+    'types-note':'نوع الجراحة المناسب يقرره الجراح بناءً على وزنك، أمراضك، وتاريخك الطبي. لا يوجد نوع أفضل بشكل مطلق.',
+    'nutr-p':'التغذية بعد الجراحة <strong>ليست حمية اختيارية</strong> — هي بروتوكول طبي. الالتزام به يحمي صحتك ويضمن نجاح العملية لسنوات.',
+    'stage-lbl':'اضغط على مرحلتك لمعرفة ما تأكله',
+    sp0:'أسبوع 1–2',sp1:'أسبوع 3–4',sp2:'أسبوع 5–6',sp3:'أسبوع 7–8',sp4:'شهر 3+',
+    'rules-lbl':'القواعد الذهبية — طوال الحياة',
+    rl1:'البروتين أولاً',rl1d:'في كل وجبة — قبل الخضار والنشويات',
+    rl2:'لا شرب مع الأكل',rl2d:'انتظر 30 دقيقة بعد كل وجبة',
+    rl3:'مكملات يومياً',rl3d:'B12، حديد، كالسيوم، فيتامين D — مدى الحياة',
+    rl4:'تحاليل كل 6 أشهر',rl4d:'حديد، فيريتين، B12، كالسيوم، بروتين كلي',
+    'foods-lbl':'اضغط على أي طعام لمعرفة طريقة تحضيره',
+    f1n:'البيض',f1t:'بروتين ممتاز',f1d:'مسلوق ناعم أو مخفوق — أفضل خيار في مرحلة الطعام الطري. تجنب القلي في الأشهر الأولى.',
+    f2n:'صدر الدجاج',f2t:'بروتين عالٍ',f2d:'مسلوق ومهروس في مرحلة الهرس. مقطع صغيراً جداً مع مضغ ببطء في المرحلة الطرية.',
+    f3n:'سمك أبيض',f3t:'هضم سهل',f3d:'مطبوخ على البخار أو مسلوق. سهل الهضم وطري بطبعه — مثالي من أسبوع 5.',
+    f4n:'زبادي يوناني',f4t:'بروتين + بروبيوتيك',f4d:'اختر النوع الخالي من الدسم وبدون سكر مضاف. ملعقتان كبيرتان كافيتان في البداية.',
+    f5n:'العدس المهروس',f5t:'بروتين نباتي',f5d:'مطبوخ جيداً ومهروس ناعماً. ابدأ بكميات صغيرة — قد يسبب انتفاخاً في البداية لبعض المرضى.',
+    f6n:'الأفوكادو',f6t:'دهون صحية',f6d:'ربع حبة مهروسة — مصدر ممتاز للدهون الصحية. لكن كميته تُحسب لأنه عالي السعرات.',
+    w1t:'متلازمة الإغراق — Dumping Syndrome',w1b:'دوخة، غثيان، وتعرق خلال 30 دقيقة من الأكل. تحدث عند تناول السكر أو الدهون بكميات كبيرة.',w1s:'✅ الحل: تجنب السكر والحلويات تماماً — خاصة في السنة الأولى',
+    w2t:'نقص البروتين',w2b:'تساقط الشعر، ضعف عام، وفقدان عضلي. من أكثر المشاكل شيوعاً بعد الجراحة.',w2s:'✅ الهدف: 60–80 جرام بروتين يومياً — البروتين أولاً في كل وجبة',
+    w3t:'الجفاف',w3b:'المعدة الصغيرة تجعل الشرب بكميات كبيرة صعباً — مما يعرّض المرضى للجفاف بشكل أسرع من غيرهم.',w3s:'✅ الهدف: 1.5 لتر ماء يومياً — رشفة رشفة على مدار اليوم',
+    w4t:'نقص الفيتامينات والمعادن',w4b:'بعض أنواع الجراحة تضعف امتصاص الحديد وB12 والكالسيوم. النقص يظهر ببطء وقد يمضي أشهر قبل ظهور أعراضه.',w4s:'✅ تحليل دم شامل كل 3–6 أشهر — ولا تتوقف عن المكملات بدون إذن طبيب',
+    'warn-note':'إذا أجريت جراحة Bypass أو SADI-S — المتابعة مع أخصائي تغذية متخصص في السمنة ليست خياراً. هي جزء من العلاج.',
+    'sh-title':'🔗 شارك هذا الدليل','sh-sub':'للأطباء: أرسله لمرضاك قبل الجراحة أو بعدها\nلمن يفكر في الجراحة: شاركه مع عائلتك',
+    'wa-lbl':'واتساب','li-lbl':'LinkedIn','cp-lbl':'نسخ الرابط',
+    disc:'هذا الدليل للتوعية العامة فقط — لا يُغني عن استشارة الطبيب المعالج والفريق الطبي المتخصص',
+    quiz:[
+      {q:'من هو المرشح المناسب لجراحة السمنة؟',opts:['كل من يريد إنقاص الوزن','من لديه BMI فوق 35 مع أمراض مصاحبة وفشلت معه طرق أخرى','من يعاني من زيادة وزن بسيطة','من طلب الجراحة بنفسه'],ans:1,fb:'صحيح. الجراحة مخصصة لحالات السمنة المفرطة بعد فشل الأساليب التقليدية — وتتطلب تقييماً طبياً شاملاً.'},
+      {q:'لماذا ينخفض الشعور بالجوع كثيراً بعد قص المعدة؟',opts:['لأن المعدة صغيرة فلا تتسع للطعام','لأن هرمون الغريلين ينخفض مع إزالة جزء من المعدة','لأن المريض يتناول أدوية للجوع','لأن الأمعاء تعمل أبطأ'],ans:1,fb:'ممتاز. هرمون الغريلين يُنتَج في الجزء الذي يُزال — لهذا يقل الجوع بشكل لافت، وليس فقط بسبب الحجم الصغير.'},
+      {q:'ما أهم قاعدة غذائية بعد الجراحة في كل وجبة؟',opts:['البدء بالخضار','البدء بالنشويات','البروتين أولاً قبل أي شيء','شرب الماء أثناء الأكل'],ans:2,fb:'صحيح تماماً. البروتين أولاً في كل وجبة يحافظ على العضلات ويمنع نقص التغذية — هذه القاعدة لا تتغير مدى الحياة.'},
+      {q:'لماذا تكون المكملات الغذائية إلزامية بعد جراحة Bypass؟',opts:['لأن المريض لا يأكل كثيراً','لأن الجراحة تتجاوز منطقة امتصاص الحديد وB12 والكالسيوم','لأن الأطباء يوصون بها دائماً','لأنها تساعد على إنقاص الوزن'],ans:1,fb:'صحيح. جراحة Bypass تتجاوز الجزء الأساسي لامتصاص بعض العناصر — المكملات تعوض هذا النقص وليست اختيارية.'},
+    ],
+    qNext:'التالي ←',qScore:'نتيجتك',qOf:'من 4',
+    qMsg:{4:'ممتاز! أنت على دراية جيدة بجراحة السمنة.',3:'جيد جداً — راجع الإجابات الخاطئة مرة أخرى.',2:'جيد — يستحق قراءة الدليل مجدداً.',1:'لا بأس — الدليل هنا لمساعدتك في فهم كل شيء.'},
+    qRetry:'إعادة الاختبار'
+  },
+  en:{
+    'ep-label':'Episode 1 — Bariatric Surgery',
+    'hero-h1':'Bariatric Surgery — What Do You Need to Know?',
+    'hero-hook':'A question everyone asks before or after surgery. The answers are here — clear, simple, and honest.',
+    t1:'☕ Overview',t2:'🔧 Surgery types',t3:'🥗 Nutrition',t4:'⚠️ Watch out',t5:'❓ Test yourself',
+    'intro-p1':'Bariatric surgery is not a quick fix — and it is not cosmetic. It is a medically approved procedure that helps people who have tried everything else. <strong>Your stomach changes. Your hormones change. Your life changes.</strong>',
+    r1t:'BMI above 35',r1d:'With related conditions such as diabetes or high blood pressure',
+    r2t:'After other methods fail',r2d:'Surgery comes after diet, exercise and medication have not worked',
+    r3t:'Lifelong commitment',r3d:'Supplements, regular blood tests, and ongoing medical follow-up',
+    r4t:'A specialist team',r4d:'Surgeon, dietitian, and a follow-up doctor working together',
+    'what-changes-lbl':'<strong>What does surgery actually change?</strong>',
+    'what-changes':'Your stomach becomes much smaller. The hunger hormone ghrelin drops significantly — many patients say they simply forgot to eat. Insulin sensitivity often improves within days of surgery, before you have lost much weight at all.',
+    golden:'The golden rule: if you are thinking about surgery, the first step is a full medical assessment with a specialist surgeon. No decision without proper evaluation.',
+    'types-intro':'Tap any surgery type to read the details',
+    ty1n:'Sleeve Gastrectomy',ty1sub:'The most common procedure worldwide',ty1d:'About 80% of the stomach is removed, leaving a narrow sleeve. No rerouting of the intestines. Nutritional risks are relatively lower. Suitable for most patients as a first option.',
+    ty2n:'Roux-en-Y Gastric Bypass',ty2sub:'Most effective for type 2 diabetes',ty2d:'A small stomach pouch is created and the intestines are rerouted. Faster and greater weight loss. Requires lifelong intensive monitoring of vitamins — especially B12, iron, and calcium.',
+    ty3n:'Mini Bypass (OAGB)',ty3sub:'A simpler form of classic Bypass',ty3d:'Similar results to Roux-en-Y with less surgical complexity. Increasingly common in specialist centres. Also requires close long-term nutritional follow-up.',
+    ty4n:'Duodenal Switch (SADI-S)',ty4sub:'For severe obesity — BMI 50 and above',ty4d:'The most powerful of all procedures for weight loss. Carries the highest risk of nutritional deficiency. Requires the strictest lifelong follow-up without exception.',
+    'types-note':'The right surgery for you depends on your weight, your health conditions, and your surgeon\'s assessment. There is no single best option — only what is right for your situation.',
+    'nutr-p':'Nutrition after surgery is <strong>not an optional diet</strong> — it is a medical protocol. Following it protects your health and keeps the surgery working for years to come.',
+    'stage-lbl':'Tap your stage to see what you can eat',
+    sp0:'Week 1–2',sp1:'Week 3–4',sp2:'Week 5–6',sp3:'Week 7–8',sp4:'Month 3+',
+    'rules-lbl':'The golden rules — for life',
+    rl1:'Protein first',rl1d:'At every meal — before vegetables and carbs',
+    rl2:'No drinking with meals',rl2d:'Wait 30 minutes after every meal before you drink',
+    rl3:'Supplements every day',rl3d:'B12, iron, calcium, vitamin D — for life, no exceptions',
+    rl4:'Blood tests every 6 months',rl4d:'Iron, ferritin, B12, calcium, and total protein',
+    'foods-lbl':'Tap any food to see how to prepare it',
+    f1n:'Eggs',f1t:'Excellent protein',f1d:'Soft-boiled or scrambled — the best protein source in the soft food stage. Avoid frying in the first few months.',
+    f2n:'Chicken breast',f2t:'High in protein',f2d:'Boiled and puréed in the purée stage. Cut into very small pieces and chew slowly in the soft stage.',
+    f3n:'White fish',f3t:'Easy to digest',f3d:'Steamed or boiled. Naturally soft and easy to digest — ideal from week 5 onwards.',
+    f4n:'Greek yogurt',f4t:'Protein + probiotics',f4d:'Choose a fat-free version with no added sugar. Two tablespoons is enough to start with.',
+    f5n:'Puréed lentils',f5t:'Plant-based protein',f5d:'Well cooked and blended smooth. Start with small amounts — some patients find them bloating at first.',
+    f6n:'Avocado',f6t:'Healthy fats',f6d:'A quarter, mashed. A great source of healthy fat — but count it in your portions as it is calorie-dense.',
+    w1t:'Dumping Syndrome',w1b:'Dizziness, nausea, and sweating within 30 minutes of eating. It happens when sugar or heavy fat reaches the small intestine too quickly. It can be genuinely painful.',w1s:'✅ The fix: cut out sugar and sweets entirely — especially in the first year',
+    w2t:'Protein deficiency',w2b:'Hair loss, general weakness, and muscle loss. One of the most common problems after surgery — usually caused by eating too little protein without realising it.',w2s:'✅ The goal: 60–80 grams of protein a day — protein first at every single meal',
+    w3t:'Dehydration',w3b:'Your small stomach makes it hard to drink large amounts at once, so dehydration creeps up faster than you expect. It shows up as headaches, fatigue, and nausea.',w3s:'✅ The goal: 1.5 litres of water a day — sip slowly and steadily throughout the day',
+    w4t:'Vitamin and mineral deficiency',w4b:'Some surgeries reduce how well your body absorbs iron, B12, and calcium from food alone. The deficiency builds slowly and can take months to cause symptoms — by which point it is already serious.',w4s:'✅ Full blood panel every 3–6 months — never stop your supplements without your doctor\'s approval',
+    'warn-note':'If you have had a Bypass or SADI-S — regular follow-up with a bariatric dietitian is not optional. It is part of the treatment itself.',
+    'sh-title':'🔗 Share this guide','sh-sub':'For surgeons: send this to patients before or after surgery.\nFor anyone considering surgery: share it with your family.',
+    'wa-lbl':'WhatsApp','li-lbl':'LinkedIn','cp-lbl':'Copy link',
+    disc:'This guide is for general awareness only — it does not replace advice from your surgeon, dietitian, or medical team.',
+    quiz:[
+      {q:'Who is a good candidate for bariatric surgery?',opts:['Anyone who wants to lose weight','Someone with BMI above 35 with related conditions, after other methods have failed','Anyone with a little extra weight to lose','Anyone who requests the surgery themselves'],ans:1,fb:'Correct. Surgery is for severe obesity cases after conventional methods have not worked — and always requires a full medical assessment first.'},
+      {q:'Why does hunger drop so dramatically after sleeve gastrectomy?',opts:['Because the stomach is small so it fills up faster','Because the ghrelin hormone falls when part of the stomach is removed','Because patients take appetite-suppressing medication','Because the intestines work more slowly'],ans:1,fb:'Excellent. Ghrelin is produced in the part of the stomach that is removed — so hunger drops significantly, not just because of the smaller size.'},
+      {q:'What is the most important rule to follow at every meal after surgery?',opts:['Start with vegetables','Start with carbohydrates','Eat protein first, before anything else','Drink water with your food'],ans:2,fb:'Exactly right. Protein first at every meal protects your muscles and prevents nutritional deficiency — this rule never changes, for life.'},
+      {q:'Why are supplements essential after gastric bypass surgery?',opts:['Because patients eat so little food','Because the surgery bypasses the main absorption area for iron, B12, and calcium','Because doctors always recommend them','Because they help with weight loss'],ans:1,fb:'Correct. Bypass surgery skips the part of the gut where key nutrients are absorbed. Supplements replace what food alone cannot provide — they are not optional.'},
+    ],
+    qNext:'Next →',qScore:'Your score',qOf:'out of 4',
+    qMsg:{4:'Excellent — you really know your stuff.',3:'Very good — take another look at the ones you missed.',2:'Good start — reading through the guide again will help.',1:'No worries — everything you need is right here in the guide.'},
+    qRetry:'Try again'
+  }
+};
+
+function applyT(){
+  var d=T[lang];
+  ['ep-label','hero-h1','hero-hook','t1','t2','t3','t4','t5',
+   'r1t','r1d','r2t','r2d','r3t','r3d','r4t','r4d','golden',
+   'types-intro','ty1n','ty1sub','ty1d','ty2n','ty2sub','ty2d','ty3n','ty3sub','ty3d','ty4n','ty4sub','ty4d','types-note',
+   'nutr-p','stage-lbl','sp0','sp1','sp2','sp3','sp4','rules-lbl',
+   'rl1','rl1d','rl2','rl2d','rl3','rl3d','rl4','rl4d','foods-lbl',
+   'f1n','f1t','f1d','f2n','f2t','f2d','f3n','f3t','f3d','f4n','f4t','f4d','f5n','f5t','f5d','f6n','f6t','f6d',
+   'w1t','w1b','w1s','w2t','w2b','w2s','w3t','w3b','w3s','w4t','w4b','w4s','warn-note',
+   'sh-title','sh-sub','wa-lbl','li-lbl','cp-lbl','disc'
+  ].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el&&d[id]!==undefined){
+      if(id==='intro-p1'||id==='nutr-p'||id==='what-changes-lbl') el.innerHTML=d[id];
+      else el.textContent=d[id];
+    }
+  });
+  document.getElementById('intro-p1').innerHTML=d['intro-p1'];
+  document.getElementById('nutr-p').innerHTML=d['nutr-p'];
+  document.getElementById('what-changes-lbl').innerHTML=d['what-changes-lbl'];
+  document.getElementById('what-changes').textContent=d['what-changes'];
+  document.getElementById('sh-sub').innerHTML=d['sh-sub'].replace('\n','<br>');
+  document.getElementById('wa-link').href='https://wa.me/?text='+(lang==='ar'?'دليل جراحة السمنة: ':'Bariatric Surgery Guide: ')+'https://randareda-droid.github.io/Patient-Guide-/bariatric-ep01.html';
+  renderStage();
+  qIdx=0;qScore=0;answered=false;
+  document.getElementById('score-box').style.display='none';
+  document.getElementById('quiz-box').style.display='block';
+  renderQ();
+}
+
+function setLang(l,btn){
+  lang=l;
+  document.documentElement.lang=l;
+  document.body.classList.toggle('en',l==='en');
+  document.body.dir=l==='en'?'ltr':'rtl';
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  applyT();
+}
+
+function show(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function setStage(i,btn){
+  curStage=i;
+  document.querySelectorAll('.stage-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderStage();
+}
+
+function renderStage(){
+  var s=stages[lang][curStage];
+  document.getElementById('sw').textContent=s.w;
+  document.getElementById('sn').textContent=s.n;
+  document.getElementById('sl').textContent=s.l;
+  document.getElementById('st').textContent=s.t;
+}
+
+function renderQ(){
+  var d=T[lang],qs=d.quiz;
+  if(qIdx>=qs.length){showScore();return;}
+  var q=qs[qIdx];
+  document.getElementById('qfill').style.width=((qIdx+1)/qs.length*100)+'%';
+  document.getElementById('qtext').textContent=q.q;
+  document.getElementById('qcount').textContent=(qIdx+1)+' / '+qs.length;
+  document.getElementById('qnext').textContent=d.qNext;
+  var c=document.getElementById('qopts');c.innerHTML='';
+  q.opts.forEach(function(o,i){
+    var b=document.createElement('button');b.className='qopt';b.textContent=o;
+    b.onclick=function(){pick(i,q.ans,q.fb);};c.appendChild(b);
+  });
+  document.getElementById('qfb').className='qfb';
+  document.getElementById('qfb').textContent='';
+  answered=false;
+}
+
+function pick(i,ans,fb){
+  if(answered)return;answered=true;
+  var all=document.querySelectorAll('.qopt');
+  all[i].classList.add(i===ans?'ok':'no');
+  all[ans].classList.add('ok');
+  if(i===ans)qScore++;
+  var f=document.getElementById('qfb');f.textContent=fb;f.className='qfb show '+(i===ans?'ok':'no');
+}
+
+function nextQ(){if(!answered&&qIdx<T[lang].quiz.length)return;qIdx++;renderQ();}
+
+function showScore(){
+  document.getElementById('quiz-box').style.display='none';
+  document.getElementById('score-box').style.display='block';
+  var d=T[lang];
+  document.getElementById('snum').textContent=qScore+'/'+d.quiz.length;
+  document.getElementById('sof').textContent=d.qScore+' — '+qScore+' '+d.qOf;
+  document.getElementById('smsg').textContent=d.qMsg[qScore]||d.qMsg[1];
+  document.getElementById('retry').textContent=d.qRetry;
+}
+
+function resetQuiz(){
+  qIdx=0;qScore=0;answered=false;
+  document.getElementById('score-box').style.display='none';
+  document.getElementById('quiz-box').style.display='block';
+  renderQ();
+}
+
+function copyLink(btn){
+  navigator.clipboard.writeText('https://randareda-droid.github.io/Patient-Guide-/bariatric-ep01.html').then(function(){
+    var s=btn.querySelector('span'),o=s.textContent;
+    s.textContent=lang==='ar'?'تم النسخ ✓':'Copied ✓';
+    setTimeout(function(){s.textContent=o;},2000);
+  });
+}
+
+renderStage();renderQ();
+</script>
+</body>
+</html>
