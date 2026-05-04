@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>أدوية السمنة الجديدة — الحلقة الثانية | Bariatric Nutrition Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --green: #2E7D6B;
+    --green-light: #3a9b84;
+    --green-pale: #e8f4f1;
+    --green-dark: #1f5549;
+    --bg: #F5F7F6;
+    --white: #ffffff;
+    --text: #1a2e28;
+    --text-muted: #5a7a72;
+    --border: #d4e8e2;
+    --shadow: 0 2px 16px rgba(46,125,107,0.10);
+    --shadow-hover: 0 6px 28px rgba(46,125,107,0.18);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --font-ar: 'Tajawal', sans-serif;
+    --font-en: 'Lato', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-ar);
+    min-height: 100vh;
+    line-height: 1.7;
+  }
+
+  body.en {
+    font-family: var(--font-en);
+    direction: ltr;
+    text-align: left;
+  }
+
+  /* ── LANGUAGE TOGGLE ── */
+  .lang-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 24px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+  }
+
+  .lang-btn {
+    background: none;
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 16px;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: var(--font-ar);
+    color: var(--text-muted);
+    transition: all 0.2s;
+  }
+
+  .lang-btn.active {
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 60%, var(--green-light) 100%);
+    color: var(--white);
+    padding: 52px 24px 44px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-size: clamp(24px, 5vw, 34px);
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+
+  .hero p {
+    font-size: clamp(14px, 3vw, 17px);
+    font-weight: 300;
+    opacity: 0.88;
+    max-width: 580px;
+    margin: 0 auto 22px;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .hero-tag {
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  /* ── TABS ── */
+  .tabs-wrap {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 49px;
+    z-index: 90;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs-wrap::-webkit-scrollbar { display: none; }
+
+  .tabs {
+    display: flex;
+    min-width: max-content;
+    padding: 0 16px;
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 14px 18px;
+    font-family: var(--font-ar);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.22s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  body.en .tab-btn { font-family: var(--font-en); }
+
+  .tab-btn.active {
+    color: var(--green);
+    border-bottom-color: var(--green);
+    font-weight: 700;
+  }
+
+  .tab-btn:hover:not(.active) {
+    color: var(--green);
+    background: var(--green-pale);
+  }
+
+  /* ── CONTENT ── */
+  .content {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 16px 60px;
+  }
+
+  .tab-panel { display: none; animation: fadeIn 0.3s ease; }
+  .tab-panel.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: box-shadow 0.2s;
+  }
+
+  .card:hover { box-shadow: var(--shadow-hover); }
+
+  .card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card p {
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .card p:last-child { margin-bottom: 0; }
+
+  /* ── DRUG CARDS ── */
+  .drug-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .drug-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px;
+    box-shadow: var(--shadow);
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .drug-card:hover {
+    border-color: var(--green);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .drug-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .drug-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 4px;
+  }
+
+  .drug-brand {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .drug-desc {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── AUDIENCE PANELS ── */
+  .audience-panel {
+    border-radius: var(--radius);
+    padding: 22px;
+    margin-bottom: 16px;
+    border-right: 5px solid var(--green);
+    background: var(--white);
+    box-shadow: var(--shadow);
+  }
+
+  body.en .audience-panel { border-right: none; border-left: 5px solid var(--green); }
+
+  .audience-panel.blue { border-color: #3b82f6; }
+  .audience-panel.amber { border-color: #f59e0b; }
+  .audience-panel.purple { border-color: #8b5cf6; }
+
+  .audience-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .audience-panel ul {
+    padding-right: 18px;
+    margin: 0;
+  }
+
+  body.en .audience-panel ul { padding-right: 0; padding-left: 18px; }
+
+  .audience-panel li {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  /* ── NUTRITION GRID ── */
+  .nutrition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .nutrition-item {
+    background: var(--green-pale);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+
+  .nutrition-item .icon { font-size: 26px; margin-bottom: 8px; display: block; }
+  .nutrition-item .label { font-size: 13px; font-weight: 700; color: var(--green-dark); margin-bottom: 4px; }
+  .nutrition-item .value { font-size: 12px; color: var(--text-muted); }
+
+  /* ── COMPARISON TABLE ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+
+  .compare-table th {
+    background: var(--green);
+    color: var(--white);
+    padding: 13px 16px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  body.en .compare-table th { text-align: left; }
+
+  .compare-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: var(--bg); }
+
+  /* ── FAQ ACCORDION ── */
+  .faq-item {
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 16px 20px;
+    font-family: var(--font-ar);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    text-align: right;
+    transition: background 0.2s;
+  }
+
+  body.en .faq-q { font-family: var(--font-en); text-align: left; }
+
+  .faq-q:hover { background: var(--green-pale); }
+  .faq-q.open { color: var(--green); }
+
+  .faq-arrow {
+    flex-shrink: 0;
+    font-size: 18px;
+    transition: transform 0.25s;
+    color: var(--green);
+  }
+
+  .faq-q.open .faq-arrow { transform: rotate(180deg); }
+
+  .faq-a {
+    display: none;
+    padding: 0 20px 16px;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+
+  .faq-a.open { display: block; animation: fadeIn 0.25s ease; }
+
+  /* ── TIP BOX ── */
+  .tip {
+    background: var(--green-pale);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    font-size: 13.5px;
+    color: var(--green-dark);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin: 12px 0;
+    border: 1px solid #b8ddd5;
+  }
+
+  .tip-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+  .warn {
+    background: #fff8e6;
+    border-color: #f5c842;
+    color: #7a5a00;
+  }
+
+  .info {
+    background: #eef4ff;
+    border-color: #93b4ef;
+    color: #1e3a6e;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-head {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--green-dark);
+    margin: 28px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--green-pale);
+  }
+
+  .section-head:first-child { margin-top: 0; }
+
+  /* ── SHARE ── */
+  .share-section {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    text-align: center;
+    margin-top: 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+
+  .share-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 6px;
+  }
+
+  .share-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+  }
+
+  .share-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-family: var(--font-ar);
+  }
+
+  body.en .share-btn { font-family: var(--font-en); }
+
+  .share-btn.whatsapp { background: #25D366; color: white; }
+  .share-btn.whatsapp:hover { background: #1ebe5d; }
+  .share-btn.linkedin { background: #0A66C2; color: white; }
+  .share-btn.linkedin:hover { background: #095ba8; }
+  .share-btn.copy { background: var(--bg); color: var(--text); border: 1.5px solid var(--border); }
+  .share-btn.copy:hover { border-color: var(--green); color: var(--green); }
+
+  /* ── WARM NOTE ── */
+  .warm-note {
+    background: linear-gradient(135deg, var(--green-pale), #f0f9f6);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    margin: 20px 0 0;
+    border: 1px solid #b8ddd5;
+    font-size: 13.5px;
+    color: var(--green-dark);
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 20px 16px 40px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .footer a {
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 480px) {
+    .drug-grid { grid-template-columns: 1fr 1fr; }
+    .nutrition-grid { grid-template-columns: 1fr 1fr; }
+    .compare-table { font-size: 12px; }
+    .compare-table th, .compare-table td { padding: 10px 10px; }
+  }
+
+  /* AR / EN text helpers */
+  .ar { display: block; }
+  .en-text { display: none !important; }
+  body.en .ar { display: none !important; }
+  body.en .en-text { display: block !important; }
+</style>
+</head>
+<body id="body">
+
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('ar')" id="btn-ar">العربية</button>
+  <button class="lang-btn" onclick="setLang('en')" id="btn-en">English</button>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge bilingual">
+    <span class="ar">الحلقة الثانية — سلسلة التغذية بعد جراحة السمنة</span>
+    <span class="en-text">Episode 2 — Bariatric Nutrition Series</span>
+  </div>
+  <h1 class="bilingual">
+    <span class="ar">أدوية السمنة الجديدة<br/>ما الذي تحتاج معرفته فعلاً؟</span>
+    <span class="en-text">New Weight-Loss Medications<br/>What You Actually Need to Know</span>
+  </h1>
+  <p class="bilingual">
+    <span class="ar">للمقبلين على الجراحة، لمن يأخذ الدواء بديلاً، وللمتعافين بعد العملية — دليل محايد وشامل</span>
+    <span class="en-text">For surgery candidates, medication-only patients, and post-op patients — a balanced and comprehensive guide</span>
+  </p>
+  <div class="hero-author bilingual" style="margin-bottom:16px; font-size:13px; font-weight:500; opacity:0.82; letter-spacing:0.3px;">
+    <span class="ar">إعداد: أ.د. رنده رضا مبروك</span>
+    <span class="en-text">By: Professor Randa Reda Mabrouk</span>
+  </div>
+  <div class="hero-tags">
+    <span class="hero-tag bilingual"><span class="ar">💊 GLP-1</span><span class="en-text">💊 GLP-1</span></span>
+    <span class="hero-tag bilingual"><span class="ar">🏥 قبل الجراحة</span><span class="en-text">🏥 Pre-Surgery</span></span>
+    <span class="hero-tag bilingual"><span class="ar">✅ بدون جراحة</span><span class="en-text">✅ Medication Only</span></span>
+    <span class="hero-tag bilingual"><span class="ar">🔄 بعد الجراحة</span><span class="en-text">🔄 Post-Surgery</span></span>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="openTab('intro')">
+      <span class="bilingual"><span class="ar">☕ ما هذه الأدوية؟</span><span class="en-text">☕ What Are These Meds?</span></span>
+    </button>
+    <button class="tab-btn" onclick="openTab('nomeds')">
+      <span class="bilingual"><span class="ar">✅ الدواء بديلاً</span><span class="en-text">✅ Medication Only</span></span>
+    </button>
+    <button class="tab-btn" onclick="openTab('pre')">
+      <span class="bilingual"><span class="ar">🏥 قبل الجراحة</span><span class="en-text">🏥 Pre-Surgery</span></span>
+    </button>
+    <button class="tab-btn" onclick="openTab('post')">
+      <span class="bilingual"><span class="ar">🔄 بعد الجراحة</span><span class="en-text">🔄 Post-Surgery</span></span>
+    </button>
+    <button class="tab-btn" onclick="openTab('nutrition')">
+      <span class="bilingual"><span class="ar">🥗 التغذية مع الدواء</span><span class="en-text">🥗 Nutrition on Meds</span></span>
+    </button>
+    <button class="tab-btn" onclick="openTab('faq')">
+      <span class="bilingual"><span class="ar">❓ أسئلة شائعة</span><span class="en-text">❓ FAQ</span></span>
+    </button>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- ═══ TAB 1: INTRO ═══ -->
+  <div class="tab-panel active" id="tab-intro">
+
+    <h2 class="section-head bilingual">
+      <span class="ar">كيف تعمل أدوية السمنة الجديدة؟</span>
+      <span class="en-text">How Do the New Weight-Loss Medications Work?</span>
+    </h2>
+
+    <div class="card">
+      <p class="bilingual">
+        <span class="ar">أدوية الجيل الجديد لعلاج السمنة — وأبرزها أدوية <strong>GLP-1</strong> — تعمل على محاكاة هرمونات الجهاز الهضمي التي تُنظّم الجوع والشبع. النتيجة: تأكل أقل، وتشعر بالشبع أسرع، وينخفض وزنك تدريجياً.</span>
+        <span class="en-text">The new generation of obesity medications — most notably <strong>GLP-1</strong> drugs — work by mimicking gut hormones that regulate hunger and satiety. The result: you eat less, feel full faster, and lose weight gradually.</span>
+      </p>
+      <p class="bilingual">
+        <span class="ar">هذه الأدوية ليست "حبة تخسيس" — إنها أدوية طبية معتمدة، تُوصف تحت إشراف طبي، وتستدعي التزاماً حقيقياً بنمط الحياة.</span>
+        <span class="en-text">These are not "diet pills" — they are approved medical treatments, prescribed under clinical supervision, and require genuine lifestyle commitment.</span>
+      </p>
+    </div>
+
+    <h2 class="section-head bilingual">
+      <span class="ar">أبرز الأدوية المتاحة حالياً</span>
+      <span class="en-text">Most Common Medications Available Now</span>
+    </h2>
+
+    <div class="drug-grid">
+      <div class="drug-card">
+        <span class="drug-icon">💉</span>
+        <div class="drug-name">Semaglutide</div>
+        <div class="drug-brand bilingual"><span class="ar">أوزمبيك / ويغوفي</span><span class="en-text">Ozempic / Wegovy</span></div>
+        <div class="drug-desc bilingual">
+          <span class="ar">GLP-1 — حقن أسبوعية، يُقلّل الشهية ويُبطئ إفراغ المعدة</span>
+          <span class="en-text">GLP-1 agonist — weekly injection, reduces appetite and slows gastric emptying</span>
+        </div>
+      </div>
+      <div class="drug-card">
+        <span class="drug-icon">💉</span>
+        <div class="drug-name">Tirzepatide</div>
+        <div class="drug-brand bilingual"><span class="ar">مونجارو / زيبباوند</span><span class="en-text">Mounjaro / Zepbound</span></div>
+        <div class="drug-desc bilingual">
+          <span class="ar">GLP-1 + GIP — ثنائي المفعول، نتائج أعلى في فقدان الوزن</span>
+          <span class="en-text">Dual GLP-1 + GIP — twin action, higher weight loss outcomes in trials</span>
+        </div>
+      </div>
+      <div class="drug-card">
+        <span class="drug-icon">💊</span>
+        <div class="drug-name">Orlistat</div>
+        <div class="drug-brand bilingual"><span class="ar">زينيكال / أورليبيسا</span><span class="en-text">Xenical / Alli</span></div>
+        <div class="drug-desc bilingual">
+          <span class="ar">يُقلّل امتصاص الدهون من الأمعاء — أقراص مع الوجبات</span>
+          <span class="en-text">Reduces fat absorption in the gut — taken with meals, older generation</span>
+        </div>
+      </div>
+      <div class="drug-card">
+        <span class="drug-icon">💉</span>
+        <div class="drug-name">Liraglutide</div>
+        <div class="drug-brand bilingual"><span class="ar">ساكسيندا</span><span class="en-text">Saxenda</span></div>
+        <div class="drug-desc bilingual">
+          <span class="ar">GLP-1 — حقن يومية، الجيل السابق لسيماغلوتيد</span>
+          <span class="en-text">GLP-1 agonist — daily injection, predecessor to semaglutide</span>
+        </div>
+      </div>
+      <div class="drug-card">
+        <span class="drug-icon">💉</span>
+        <div class="drug-name">Retatrutide</div>
+        <div class="drug-brand bilingual"><span class="ar">قيد الدراسة</span><span class="en-text">Under Trial</span></div>
+        <div class="drug-desc bilingual">
+          <span class="ar">ثلاثي المفعول (GLP-1 + GIP + Glucagon) — الجيل القادم</span>
+          <span class="en-text">Triple agonist (GLP-1 + GIP + Glucagon) — next generation, still in trials</span>
+        </div>
+      </div>
+      <div class="drug-card">
+        <span class="drug-icon">💊</span>
+        <div class="drug-name">Naltrexone / Bupropion</div>
+        <div class="drug-brand bilingual"><span class="ar">كونتراف</span><span class="en-text">Contrave</span></div>
+        <div class="drug-desc bilingual">
+          <span class="ar">يعمل على مركز الشهية في الدماغ — أقراص يومية</span>
+          <span class="en-text">Acts on brain appetite centres — daily tablets, different mechanism</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip bilingual">
+      <span class="tip-icon">📌</span>
+      <div>
+        <span class="ar">هذه المعلومات للتوعية العامة. لا يوجد دواء "الأفضل للجميع" — النوع والجرعة والمدة تُحدَّد مع طبيبك حسب حالتك الصحية الكاملة.</span>
+        <span class="en-text">This is general education. There is no "best for everyone" medication — type, dose, and duration are determined with your doctor based on your full health picture.</span>
+      </div>
+    </div>
+
+    <h2 class="section-head bilingual" style="margin-top:28px">
+      <span class="ar">مقارنة سريعة: كيف تختلف عن بعضها؟</span>
+      <span class="en-text">Quick Comparison: How Do They Differ?</span>
+    </h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th class="bilingual"><span class="ar">الدواء</span><span class="en-text">Medication</span></th>
+          <th class="bilingual"><span class="ar">الطريقة</span><span class="en-text">Method</span></th>
+          <th class="bilingual"><span class="ar">معدل فقدان الوزن</span><span class="en-text">Weight Loss</span></th>
+          <th class="bilingual"><span class="ar">ملاحظة</span><span class="en-text">Note</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Semaglutide</td>
+          <td class="bilingual"><span class="ar">حقنة أسبوعية</span><span class="en-text">Weekly injection</span></td>
+          <td class="bilingual"><span class="ar">~15% من الوزن</span><span class="en-text">~15% body weight</span></td>
+          <td class="bilingual"><span class="ar">الأكثر انتشاراً</span><span class="en-text">Most widely used</span></td>
+        </tr>
+        <tr>
+          <td>Tirzepatide</td>
+          <td class="bilingual"><span class="ar">حقنة أسبوعية</span><span class="en-text">Weekly injection</span></td>
+          <td class="bilingual"><span class="ar">~22% من الوزن</span><span class="en-text">~22% body weight</span></td>
+          <td class="bilingual"><span class="ar">نتائج أعلى في الدراسات</span><span class="en-text">Highest results in trials</span></td>
+        </tr>
+        <tr>
+          <td>Liraglutide</td>
+          <td class="bilingual"><span class="ar">حقنة يومية</span><span class="en-text">Daily injection</span></td>
+          <td class="bilingual"><span class="ar">~8% من الوزن</span><span class="en-text">~8% body weight</span></td>
+          <td class="bilingual"><span class="ar">أقدم جيل — متاح أكثر</span><span class="en-text">Older generation — more available</span></td>
+        </tr>
+        <tr>
+          <td>Orlistat</td>
+          <td class="bilingual"><span class="ar">أقراص مع الوجبات</span><span class="en-text">Tablets with meals</span></td>
+          <td class="bilingual"><span class="ar">~5–7% من الوزن</span><span class="en-text">~5–7% body weight</span></td>
+          <td class="bilingual"><span class="ar">يتطلب نظام غذائي منخفض الدهون</span><span class="en-text">Requires low-fat diet</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- /tab-intro -->
+
+
+  <!-- ═══ TAB 2: MEDICATION ONLY ═══ -->
+  <div class="tab-panel" id="tab-nomeds">
+
+    <div class="audience-panel">
+      <div class="audience-title bilingual">
+        <span>✅</span>
+        <span class="ar">أنت اخترت مسار الدواء — وهذا خيار مشروع تماماً</span>
+        <span class="en-text">You chose the medication path — and that is a completely valid choice</span>
+      </div>
+      <p class="bilingual" style="font-size:14px; color:var(--text)">
+        <span class="ar">ليس كل من يعاني من زيادة الوزن مرشحاً للجراحة، وليس كل من هو مرشح يريدها. الدواء وحده — مدعوماً بتغيير نمط الحياة — يُحقق نتائج حقيقية ومستدامة لكثير من الناس.</span>
+        <span class="en-text">Not everyone with excess weight is a surgery candidate, and not everyone who qualifies wants it. Medication alone — supported by lifestyle change — achieves real, lasting results for many people.</span>
+      </p>
+    </div>
+
+    <h2 class="section-head bilingual">
+      <span class="ar">ما الذي يجعل الدواء ناجحاً على المدى البعيد؟</span>
+      <span class="en-text">What Makes Medication Successful Long-Term?</span>
+    </h2>
+
+    <div class="card">
+      <div class="card-title bilingual"><span>🍽️</span><span class="ar">التغذية الصحيحة — ليست اختيارية</span><span class="en-text">Proper nutrition — not optional</span></div>
+      <p class="bilingual">
+        <span class="ar">الدواء يُقلّل الشهية، لكنه لا يختار لك ما تأكل. القرارات الغذائية تظل مسؤوليتك — والجودة تُحدّد النتيجة.</span>
+        <span class="en-text">The medication reduces appetite, but it doesn't choose what you eat. Food decisions remain your responsibility — and quality determines the outcome.</span>
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-title bilingual"><span>💪</span><span class="ar">الحركة تحمي عضلاتك</span><span class="en-text">Movement protects your muscle</span></div>
+      <p class="bilingual">
+        <span class="ar">فقدان الوزن السريع بدون تمرين يُقلّل الكتلة العضلية مع الدهون. المشي اليومي + تمارين المقاومة خطوتان لا تُهملان.</span>
+        <span class="en-text">Rapid weight loss without exercise reduces muscle mass alongside fat. Daily walking + resistance training are two steps you cannot skip.</span>
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-title bilingual"><span>🔁</span><span class="ar">ماذا لو توقفت عن الدواء؟</span><span class="en-text">What if you stop the medication?</span></div>
+      <p class="bilingual">
+        <span class="ar">الدراسات تُظهر أن معظم الوزن يعود خلال سنة من التوقف — ما لم يتغير نمط الحياة تغييراً حقيقياً. الدواء أداة، وليس حلاً دائماً بمفرده.</span>
+        <span class="en-text">Studies show most weight returns within a year of stopping — unless lifestyle genuinely changes. The medication is a tool, not a permanent solution on its own.</span>
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-title bilingual"><span>🩺</span><span class="ar">المتابعة الدورية ضرورة</span><span class="en-text">Regular follow-up is essential</span></div>
+      <p class="bilingual">
+        <span class="ar">فحص دوري كل 3 أشهر على الأقل: وزن، تحاليل الدم، تقييم الآثار الجانبية، ومراجعة الجرعة. لا تتركها للصدفة.</span>
+        <span class="en-text">Check-in at least every 3 months: weight, blood tests, side effect review, and dose assessment. Don't leave it to chance.</span>
+      </p>
+    </div>
+
+    <div class="tip warn bilingual">
+      <span class="tip-icon">⚠️</span>
+      <div>
+        <span class="ar">الآثار الجانبية الشائعة: غثيان، إمساك، حرقة معدة — خاصةً في الأسابيع الأولى. تبدأ بجرعة منخفضة وتزداد تدريجياً لتقليل الأعراض.</span>
+        <span class="en-text">Common side effects: nausea, constipation, heartburn — especially in early weeks. Doses start low and increase gradually to minimise symptoms.</span>
+      </div>
+    </div>
+
+  </div><!-- /tab-nomeds -->
+
+
+  <!-- ═══ TAB 3: PRE-SURGERY ═══ -->
+  <div class="tab-panel" id="tab-pre">
+
+    <div class="audience-panel blue">
+      <div class="audience-title bilingual">
+        <span>🏥</span>
+        <span class="ar">الدواء قبل الجراحة — جسر، وليس بديلاً</span>
+        <span class="en-text">Medication before surgery — a bridge, not a substitute</span>
+      </div>
+      <p class="bilingual" style="font-size:14px; color:var(--text)">
+        <span class="ar">بعض المرضى يبدأون بالدواء قبل الجراحة بهدف تقليل الوزن وتهيئة الجسم. هذا له فوائد محددة ومخاطر يجب معرفتها.</span>
+        <span class="en-text">Some patients begin medication before surgery to reduce weight and prepare the body. This has specific benefits and risks you need to know.</span>
+      </p>
+    </div>
+
+    <h2 class="section-head bilingual">
+      <span class="ar">لماذا يصف الأطباء الدواء قبل الجراحة؟</span>
+      <span class="en-text">Why Do Doctors Prescribe Medication Before Surgery?</span>
+    </h2>
+
+    <div class="card">
+      <ul style="padding-right:18px; margin:0" class="bilingual">
+        <span class="ar">
+          <li style="margin-bottom:10px">📉 <strong>تقليل الوزن قبل العملية</strong> — يخفّض خطر المضاعفات الجراحية، خاصةً عند مرضى السمنة المفرطة</li>
+          <li style="margin-bottom:10px">🫀 <strong>تحسين المؤشرات الصحية</strong> — ضغط الدم، السكر، الدهون — مما يُقلّل مخاطر التخدير</li>
+          <li style="margin-bottom:10px">🧠 <strong>اختبار الالتزام</strong> — من يلتزم بالدواء ونمط الحياة قبل الجراحة، يلتزم بعدها غالباً</li>
+          <li>📏 <strong>تقليص حجم الكبد الدهني</strong> — الكبد الكبير يُصعّب الوصول الجراحي — الدواء يُساعد على تقليصه</li>
+        </span>
+        <span class="en-text" style="padding-left:18px; padding-right:0">
+          <li style="margin-bottom:10px">📉 <strong>Pre-op weight reduction</strong> — lowers surgical complication risk, especially in severe obesity</li>
+          <li style="margin-bottom:10px">🫀 <strong>Improving health markers</strong> — blood pressure, glucose, lipids — reducing anaesthesia risk</li>
+          <li style="margin-bottom:10px">🧠 <strong>Testing commitment</strong> — patients who comply with meds + lifestyle before surgery tend to do well after</li>
+          <li>📏 <strong>Shrinking a fatty liver</strong> — an enlarged liver complicates surgical access — medication helps reduce it</li>
+        </span>
+      </ul>
+    </div>
+
+    <div class="tip warn bilingual">
+      <span class="tip-icon">⚠️</span>
+      <div>
+        <span class="ar"><strong>مهم:</strong> أدوية GLP-1 تُبطّئ إفراغ المعدة — يجب إيقافها قبل الجراحة بوقت كافٍ (عادةً أسبوع على الأقل) لتجنب خطر الاستنشاق أثناء التخدير. قرار الإيقاف يحدده جراحك وطبيب التخدير.</span>
+        <span class="en-text"><strong>Important:</strong> GLP-1 medications slow gastric emptying — they must be stopped well before surgery (usually at least one week) to prevent aspiration risk during anaesthesia. Your surgeon and anaesthetist decide when to stop.</span>
+      </div>
+    </div>
+
+    <div class="tip bilingual">
+      <span class="tip-icon">💡</span>
+      <div>
+        <span class="ar">إذا كنت تأخذ الدواء الآن وتُفكر في الجراحة — أخبر طبيبك الجراح من أول زيارة. لا تتوقف وحدك.</span>
+        <span class="en-text">If you are currently on medication and considering surgery — tell your surgeon from the very first visit. Never stop on your own.</span>
+      </div>
+    </div>
+
+  </div><!-- /tab-pre -->
+
+
+  <!-- ═══ TAB 4: POST-SURGERY ═══ -->
+  <div class="tab-panel" id="tab-post">
+
+    <div class="audience-panel purple">
+      <div class="audience-title bilingual">
+        <span>🔄</span>
+        <span class="ar">بعد الجراحة — موضوع يُطرح كثيراً ولا يُجاب عنه كافياً</span>
+        <span class="en-text">Post-surgery — a topic discussed widely but rarely answered fully</span>
+      </div>
+      <p class="bilingual" style="font-size:14px; color:var(--text)">
+        <span class="ar">استخدام أدوية السمنة بعد العمليات الجراحية آخذٌ في الازدياد — لأسباب متعددة ومشروعة. لكنه يحتاج فهماً خاصاً لأن التشريح تغيّر.</span>
+        <span class="en-text">Using weight-loss medications after bariatric surgery is increasingly common — for multiple valid reasons. But it requires specific understanding because anatomy has changed.</span>
+      </p>
+    </div>
+
+    <h2 class="section-head bilingual">
+      <span class="ar">لماذا يحتاج بعض المتعافين الدواء؟</span>
+      <span class="en-text">Why Do Some Post-Op Patients Need Medication?</span>
+    </h2>
+
+    <div class="card">
+      <div class="card-title bilingual"><span>📈</span><span class="ar">الهضبة أو استعادة الوزن</span><span class="en-text">Plateau or weight regain</span></div>
+      <p class="bilingual">
+        <span class="ar">بعد سنة أو أكثر من الجراحة، قد يتوقف فقدان الوزن أو يبدأ الوزن بالعودة تدريجياً. هذا شائع وله أسباب بيولوجية — ليس فشلاً شخصياً.</span>
+        <span class="en-text">After a year or more post-surgery, weight loss may stall or weight may gradually return. This is common and has biological causes — it is not personal failure.</span>
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-title bilingual"><span>🔬</span><span class="ar">كيف يختلف مفعول الدواء بعد الجراحة؟</span><span class="en-text">How does the medication work differently post-op?</span></div>
+      <p class="bilingual">
+        <span class="ar">بعد عمليات مثل تحويل مسار المعدة (Bypass)، تتغير طريقة امتصاص الأدوية الفموية. أدوية الحقن (GLP-1) تُمتص من الأنسجة تحت الجلد، وتبقى فعالة — لكن جرعتها قد تُعدَّل.</span>
+        <span class="en-text">After procedures like gastric bypass, oral medication absorption changes. Injectable GLP-1s are absorbed subcutaneously and remain effective — but dosing may need adjustment.</span>
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-title bilingual"><span>🩺</span><span class="ar">حالات يُنصح فيها بالدواء بعد الجراحة</span><span class="en-text">Situations where medication is recommended post-op</span></div>
+      <ul style="padding-right:20px; margin:8px 0 0" class="bilingual">
+        <span class="ar">
+          <li style="margin-bottom:8px; font-size:14px">استعادة الوزن بعد سنوات من العملية</li>
+          <li style="margin-bottom:8px; font-size:14px">وصول الوزن إلى هضبة مبكرة قبل الهدف</li>
+          <li style="margin-bottom:8px; font-size:14px">وجود أمراض مصاحبة مثل السكري من النوع الثاني</li>
+          <li style="margin-bottom:8px; font-size:14px">مرضى بعد تكميم المعدة الذين تمدّدت معدتهم</li>
+          <li style="font-size:14px">الرغبة في دعم إضافي مع التغييرات السلوكية</li>
+        </span>
+        <span class="en-text" style="padding-left:20px; padding-right:0">
+          <li style="margin-bottom:8px; font-size:14px">Weight regain years after surgery</li>
+          <li style="margin-bottom:8px; font-size:14px">Early plateau before reaching weight goal</li>
+          <li style="margin-bottom:8px; font-size:14px">Comorbidities such as type 2 diabetes</li>
+          <li style="margin-bottom:8px; font-size:14px">Sleeve patients whose pouch has expanded over time</li>
+          <li style="font-size:14px">Desire for additional support alongside behavioural change</li>
+        </span>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title bilingual"><span>⚡</span><span class="ar">تفاعل الدواء مع تشريح ما بعد الجراحة</span><span class="en-text">Medication interaction with post-op anatomy</span></div>
+      <p class="bilingual">
+        <span class="ar">أدوية GLP-1 تُبطّئ إفراغ المعدة — بعد التكميم أو الحزام، هذا قد يُفاقم الغثيان والقيء. بعد الـ Bypass، يُوزَّع الأثر بشكل مختلف. المراقبة الدقيقة مع الفريق الطبي ضرورة وليست اختياراً.</span>
+        <span class="en-text">GLP-1 medications slow gastric emptying — after sleeve or band procedures, this can worsen nausea and vomiting. After bypass, the effect is distributed differently. Close monitoring with your medical team is a necessity, not optional.</span>
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-title bilingual"><span>🦴</span><span class="ar">انتبه: الوزن يعود — لكن العظام والعضلات لا تغفر</span><span class="en-text">Note: weight can return — but bones and muscle don't forgive</span></div>
+      <p class="bilingual">
+        <span class="ar">فقدان الوزن السريع مرة ثانية (بعد استعادته) بدون دعم غذائي جيد قد يُسرّع فقدان الكثافة العظمية وضمور العضلات. البروتين والكالسيوم والفيتامينات لا تتوقف مهما تغيّر الدواء.</span>
+        <span class="en-text">Rapid re-loss of regained weight without nutritional support can accelerate bone density loss and muscle wasting. Protein, calcium, and vitamins continue regardless of medication changes.</span>
+      </p>
+    </div>
+
+    <div class="tip warn bilingual">
+      <span class="tip-icon">⚠️</span>
+      <div>
+        <span class="ar">جرعة ما بعد الجراحة قد تختلف — لا تبدأ أو تغيّر أي دواء بدون مراجعة فريقك الجراحي أولاً.</span>
+        <span class="en-text">Post-surgery dosing may differ significantly — never start or change any medication without consulting your bariatric team first.</span>
+      </div>
+    </div>
+
+    <h2 class="section-head bilingual">
+      <span class="ar">جراحة ثانية أم دواء؟ سؤال مشروع</span>
+      <span class="en-text">Second surgery or medication? A legitimate question</span>
+    </h2>
+
+    <div class="card">
+      <p class="bilingual">
+        <span class="ar">بعض المرضى يُقارنون بين خيار إجراء عملية ثانية (كتحويل التكميم إلى بايباس) وبين تجربة الدواء أولاً. لا إجابة عامة هنا — كلا المسارين له مكانه، وقرارك يعتمد على قدر الوزن المُستعاد، تاريخك الجراحي، وصحتك العامة.</span>
+        <span class="en-text">Some patients weigh up a second procedure (such as converting sleeve to bypass) against trying medication first. There is no universal answer — both paths have their place, and your decision depends on how much weight has returned, your surgical history, and your overall health.</span>
+      </p>
+    </div>
+
+  </div><!-- /tab-post -->
+
+
+  <!-- ═══ TAB 5: NUTRITION ═══ -->
+  <div class="tab-panel" id="tab-nutrition">
+
+    <div class="card">
+      <p class="bilingual" style="font-size:15px">
+        <span class="ar">سواء كنت تأخذ الدواء بديلاً عن الجراحة، أو جسراً لها، أو دعماً بعدها — قواعد التغذية الأساسية لا تتغير كثيراً. هذا التبويب يخصّك أياً كان وضعك.</span>
+        <span class="en-text">Whether you are taking medication instead of surgery, as a bridge to it, or as support after — the core nutrition rules don't change much. This tab is for you regardless of your situation.</span>
+      </p>
+    </div>
+
+    <h2 class="section-head bilingual">
+      <span class="ar">أهم القواعد الغذائية على الدواء</span>
+      <span class="en-text">Key Nutrition Rules While on Medication</span>
+    </h2>
+
+    <div class="nutrition-grid">
+      <div class="nutrition-item">
+        <span class="icon">🥩</span>
+        <div class="label bilingual"><span class="ar">البروتين أولاً</span><span class="en-text">Protein First</span></div>
+        <div class="value bilingual"><span class="ar">60–80 جرام يومياً كهدف أدنى</span><span class="en-text">60–80g daily as minimum</span></div>
+      </div>
+      <div class="nutrition-item">
+        <span class="icon">💧</span>
+        <div class="label bilingual"><span class="ar">الترطيب</span><span class="en-text">Hydration</span></div>
+        <div class="value bilingual"><span class="ar">1.5–2 لتر ماء يومياً على الأقل</span><span class="en-text">1.5–2 litres water daily minimum</span></div>
+      </div>
+      <div class="nutrition-item">
+        <span class="icon">🥦</span>
+        <div class="label bilingual"><span class="ar">الألياف</span><span class="en-text">Fibre</span></div>
+        <div class="value bilingual"><span class="ar">لمنع الإمساك المرتبط بالدواء</span><span class="en-text">To prevent medication-related constipation</span></div>
+      </div>
+      <div class="nutrition-item">
+        <span class="icon">🍽️</span>
+        <div class="label bilingual"><span class="ar">وجبات صغيرة</span><span class="en-text">Small Meals</span></div>
+        <div class="value bilingual"><span class="ar">3–5 وجبات صغيرة بدلاً من 3 كبيرة</span><span class="en-text">3–5 small meals over 3 large ones</span></div>
+      </div>
+      <div class="nutrition-item">
+        <span class="icon">🚫</span>
+        <div class="label bilingual"><span class="ar">تجنب السكريات</span><span class="en-text">Avoid Sugars</span></div>
+        <div class="value bilingual"><span class="ar">تُضعف مفعول الدواء وتُسبب طفرات الإنسولين</span><span class="en-text">Weaken drug effect and cause insulin spikes</span></div>
+      </div>
+      <div class="nutrition-item">
+        <span class="icon">🕐</span>
+        <div class="label bilingual"><span class="ar">توقيت الوجبات</span><span class="en-text">Meal Timing</span></div>
+        <div class="value bilingual"><span class="ar">وجبة خفيفة قبل الحقنة — ووجبة رئيسية بعد ساعتين</span><span class="en-text">Light snack before injection — main meal 2 hours after</span></div>
+      </div>
+    </div>
+
+    <h2 class="section-head bilingual">
+      <span class="ar">التعامل مع الغثيان — أكثر أعراض الدواء شيوعاً</span>
+      <span class="en-text">Managing Nausea — The Most Common Side Effect</span>
+    </h2>
+
+    <div class="card">
+      <ul style="padding-right:20px; margin:0" class="bilingual">
+        <span class="ar">
+          <li style="margin-bottom:8px; font-size:14px">🍋 تناول الزنجبيل أو شاي النعناع بين الوجبات</li>
+          <li style="margin-bottom:8px; font-size:14px">⏰ تجنب الأكل الكثير أو الثقيل في وقت الحقنة أو بعدها مباشرة</li>
+          <li style="margin-bottom:8px; font-size:14px">🥣 الوجبات الخفيفة والباردة غالباً أفضل تحملاً من الساخنة والثقيلة</li>
+          <li style="font-size:14px">🛌 تجنب الاستلقاء مباشرة بعد الأكل — انتظر 30 دقيقة على الأقل</li>
+        </span>
+        <span class="en-text" style="padding-left:20px; padding-right:0">
+          <li style="margin-bottom:8px; font-size:14px">🍋 Try ginger or peppermint tea between meals</li>
+          <li style="margin-bottom:8px; font-size:14px">⏰ Avoid large or heavy meals around injection time</li>
+          <li style="margin-bottom:8px; font-size:14px">🥣 Light, cold meals are often better tolerated than hot, heavy ones</li>
+          <li style="font-size:14px">🛌 Avoid lying down immediately after eating — wait at least 30 minutes</li>
+        </span>
+      </ul>
+    </div>
+
+    <h2 class="section-head bilingual">
+      <span class="ar">الفيتامينات والمعادن — لا تُهملها</span>
+      <span class="en-text">Vitamins and Minerals — Don't Neglect Them</span>
+    </h2>
+
+    <div class="card">
+      <p class="bilingual">
+        <span class="ar">الشهية المنخفضة بسبب الدواء تعني أنك تأكل أقل — وهذا يعني احتمال نقص في:</span>
+        <span class="en-text">Reduced appetite from medication means eating less — which means potential deficiency in:</span>
+      </p>
+      <table class="compare-table" style="margin-top:14px; margin-bottom:0">
+        <thead>
+          <tr>
+            <th class="bilingual"><span class="ar">المغذي</span><span class="en-text">Nutrient</span></th>
+            <th class="bilingual"><span class="ar">لماذا مهم</span><span class="en-text">Why It Matters</span></th>
+            <th class="bilingual"><span class="ar">مصادر جيدة</span><span class="en-text">Good Sources</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bilingual"><span class="ar">🩸 الحديد</span><span class="en-text">🩸 Iron</span></td>
+            <td class="bilingual"><span class="ar">فقر الدم — شائع خاصة عند النساء</span><span class="en-text">Anaemia — especially common in women</span></td>
+            <td class="bilingual"><span class="ar">لحم أحمر، بقوليات</span><span class="en-text">Red meat, legumes</span></td>
+          </tr>
+          <tr>
+            <td class="bilingual"><span class="ar">🦴 فيتامين D</span><span class="en-text">🦴 Vitamin D</span></td>
+            <td class="bilingual"><span class="ar">صحة العظام والمناعة</span><span class="en-text">Bone health and immunity</span></td>
+            <td class="bilingual"><span class="ar">شمس + مكمل</span><span class="en-text">Sun + supplement</span></td>
+          </tr>
+          <tr>
+            <td class="bilingual"><span class="ar">🅱️ فيتامين B12</span><span class="en-text">🅱️ Vitamin B12</span></td>
+            <td class="bilingual"><span class="ar">الأعصاب والطاقة</span><span class="en-text">Nerves and energy</span></td>
+            <td class="bilingual"><span class="ar">لحوم، بيض، مكمل</span><span class="en-text">Meat, eggs, supplement</span></td>
+          </tr>
+          <tr>
+            <td class="bilingual"><span class="ar">🥛 الكالسيوم</span><span class="en-text">🥛 Calcium</span></td>
+            <td class="bilingual"><span class="ar">العظام والعضلات</span><span class="en-text">Bones and muscles</span></td>
+            <td class="bilingual"><span class="ar">ألبان، سردين</span><span class="en-text">Dairy, sardines</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tip info bilingual">
+      <span class="tip-icon">💡</span>
+      <div>
+        <span class="ar">إذا كنت قد أجريت جراحة بارياترية سابقاً وبدأت الدواء — احتياجاتك من الفيتامينات تجمع بين احتياجات ما بعد الجراحة واحتياجات الدواء. تحاليل دورية كل 6 أشهر ضرورية.</span>
+        <span class="en-text">If you have had bariatric surgery previously and started medication — your vitamin needs combine post-op and medication requirements. Periodic blood tests every 6 months are essential.</span>
+      </div>
+    </div>
+
+  </div><!-- /tab-nutrition -->
+
+
+  <!-- ═══ TAB 6: FAQ ═══ -->
+  <div class="tab-panel" id="tab-faq">
+
+    <h2 class="section-head bilingual">
+      <span class="ar">الأسئلة الأكثر شيوعاً</span>
+      <span class="en-text">Most Frequently Asked Questions</span>
+    </h2>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="bilingual"><span class="ar">هل أدوية GLP-1 بديل حقيقي للجراحة؟</span><span class="en-text">Are GLP-1 medications a real alternative to surgery?</span></span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a bilingual">
+        <span class="ar">لبعض الناس — نعم. فقدان 15–22% من الوزن الجسمي نتيجة مثيرة للاهتمام سريرياً. لكن الجراحة تُحقق عادةً نتائج أعلى وأكثر استدامةً — خاصةً لمن يعانون من الأمراض المصاحبة. القرار يعتمد على وضعك الصحي، وليس على الأرقام فقط.</span>
+        <span class="en-text">For some people — yes. A 15–22% body weight loss is a clinically meaningful result. But surgery typically achieves higher and more durable outcomes — especially for those with comorbidities. The decision depends on your health picture, not just the numbers.</span>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="bilingual"><span class="ar">هل يمكن أخذ الدواء للأبد؟</span><span class="en-text">Can I take the medication forever?</span></span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a bilingual">
+        <span class="ar">نعم — كثير من المرضى يُعالَجون به على المدى البعيد، كما يحدث مع أدوية ضغط الدم أو السكري. لكن الكلفة والاستمرارية والآثار طويلة الأمد تظل محل متابعة مستمرة مع طبيبك.</span>
+        <span class="en-text">Yes — many patients are treated long-term, similar to blood pressure or diabetes medications. However, cost, availability, and long-term effects remain subjects of ongoing monitoring with your doctor.</span>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="bilingual"><span class="ar">ماذا يحدث إذا توقفت عن الدواء فجأة؟</span><span class="en-text">What happens if I suddenly stop the medication?</span></span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a bilingual">
+        <span class="ar">لا يوجد خطر فوري، لكن الشهية ترتفع خلال أيام، ومعظم الوزن يعود خلال أشهر. التوقف التدريجي أفضل من المفاجئ. إذا كنت بعد جراحة بارياترية، أخبر طبيبك قبل أي تغيير.</span>
+        <span class="en-text">No immediate danger, but appetite returns within days and most weight comes back within months. Gradual tapering is better than sudden stopping. If you are post-bariatric surgery, inform your doctor before any change.</span>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="bilingual"><span class="ar">هل هذه الأدوية متاحة في منطقتي؟</span><span class="en-text">Are these medications available in my region?</span></span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a bilingual">
+        <span class="ar">توافرها يختلف من دولة لأخرى. Ozempic و Saxenda أكثر انتشاراً في دول الخليج ومصر. Mounjaro (Tirzepatide) يدخل تدريجياً. تحقق مع طبيبك أو الصيدلية المتخصصة.</span>
+        <span class="en-text">Availability varies by country. Ozempic and Saxenda are more widely available in Gulf countries and Egypt. Mounjaro (Tirzepatide) is entering markets gradually. Check with your doctor or specialist pharmacy.</span>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="bilingual"><span class="ar">هل الدواء يُسبب فقدان العضلات؟</span><span class="en-text">Does the medication cause muscle loss?</span></span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a bilingual">
+        <span class="ar">فقدان الوزن السريع — بالدواء أو الجراحة — يُمكن أن يُقلّل الكتلة العضلية إذا لم يُرافقه بروتين كافٍ وتمرين. الحل: 80–100 جرام بروتين يومياً + تمارين مقاومة مرتين أسبوعياً على الأقل.</span>
+        <span class="en-text">Rapid weight loss — from medication or surgery — can reduce muscle mass if not accompanied by adequate protein and exercise. The solution: 80–100g protein daily + resistance training at least twice a week.</span>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="bilingual"><span class="ar">هل يؤثر الدواء على الخصوبة أو الحمل؟</span><span class="en-text">Does the medication affect fertility or pregnancy?</span></span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a bilingual">
+        <span class="ar">يجب إيقاف أدوية GLP-1 قبل التخطيط للحمل وخلاله وأثناء الرضاعة — لا توجد بيانات كافية عن سلامتها في هذه الفترات. تحكم منع الحمل أثناء الدواء مهم خاصةً أنه قد يُحسّن الخصوبة عند النساء.</span>
+        <span class="en-text">GLP-1 medications must be stopped before planning pregnancy, during pregnancy, and while breastfeeding — insufficient safety data exists. Contraception while on medication is important as it may improve fertility in women.</span>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="bilingual"><span class="ar">هل يمكن الجمع بين أكثر من دواء؟</span><span class="en-text">Can I combine more than one medication?</span></span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a bilingual">
+        <span class="ar">هذا قرار طبي بحت — بعض التركيبات تُدرس في البحث العلمي، لكن لا يجوز الجمع بين الأدوية بدون إشراف طبي متخصص. كلما تعددت الأدوية، كلما تزداد الحاجة للمتابعة الدقيقة.</span>
+        <span class="en-text">This is a purely medical decision — some combinations are studied in research, but combining medications without specialist medical oversight is never appropriate. The more medications, the greater the need for close monitoring.</span>
+      </div>
+    </div>
+
+    <!-- WARM NOTE -->
+    <div class="warm-note bilingual">
+      <span class="ar">كل رحلة مختلفة — ما يناسب شخصاً قد لا يناسبك.<br/>تحدث مع فريقك قبل البدء أو التوقف عن أي دواء. 🌿</span>
+      <span class="en-text">Every journey is different — what works for one person may not work for you.<br/>Talk to your team before starting or stopping any medication. 🌿</span>
+    </div>
+
+  </div><!-- /tab-faq -->
+
+
+  <!-- SHARE -->
+  <div class="share-section">
+    <div class="share-title bilingual">
+      <span class="ar">🔗 شارك هذه الحلقة مع من يسأل عن الدواء</span>
+      <span class="en-text">🔗 Share this episode with anyone asking about weight-loss medications</span>
+    </div>
+    <div class="share-sub bilingual">
+      <span class="ar">مفيد لمن يُفكر في الدواء بديلاً، جسراً، أو بعد الجراحة</span>
+      <span class="en-text">Useful for anyone considering medication as alternative, bridge, or post-surgery support</span>
+    </div>
+    <div class="share-btns">
+      <a class="share-btn whatsapp" href="https://wa.me/?text=أدوية السمنة الجديدة — دليل شامل ومحايد: https://randareda-droid.github.io/Bariatric-Nutrition/ep02.html" target="_blank">
+        📱 <span class="bilingual"><span class="ar">واتساب</span><span class="en-text">WhatsApp</span></span>
+      </a>
+      <a class="share-btn linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https://randareda-droid.github.io/Bariatric-Nutrition/ep02.html" target="_blank">
+        💼 <span class="bilingual"><span class="ar">لينكدإن</span><span class="en-text">LinkedIn</span></span>
+      </a>
+      <button class="share-btn copy" onclick="copyLink()">
+        📋 <span class="bilingual"><span class="ar">نسخ الرابط</span><span class="en-text">Copy Link</span></span>
+      </button>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<div class="footer">
+  <div class="ar">إعداد: أ.د. رنده رضا مبروك<br/>
+  هذا الدليل للتوعية العامة فقط — لا يُغني عن استشارة الطبيب المعالج<br/>
+  <a href="https://randareda-droid.github.io/Bariatric-Nutrition/">الدليل التفاعلي الكامل ←</a></div>
+  <div class="en-text">By: Professor Randa Reda Mabrouk<br/>
+  This guide is for general education only — it does not replace professional medical advice<br/>
+  <a href="https://randareda-droid.github.io/Bariatric-Nutrition/">Full interactive guide ←</a></div>
+</div>
+
+<script>
+  function setLang(lang) {
+    const body = document.getElementById('body');
+    const btnAr = document.getElementById('btn-ar');
+    const btnEn = document.getElementById('btn-en');
+    if (lang === 'en') {
+      body.classList.add('en');
+      body.setAttribute('dir', 'ltr');
+      body.setAttribute('lang', 'en');
+      btnEn.classList.add('active');
+      btnAr.classList.remove('active');
+    } else {
+      body.classList.remove('en');
+      body.setAttribute('dir', 'rtl');
+      body.setAttribute('lang', 'ar');
+      btnAr.classList.add('active');
+      btnEn.classList.remove('active');
+    }
+  }
+
+  function openTab(id) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    const btns = document.querySelectorAll('.tab-btn');
+    const ids = ['intro','nomeds','pre','post','nutrition','faq'];
+    const idx = ids.indexOf(id);
+    if (idx > -1) btns[idx].classList.add('active');
+  }
+
+  function toggleFaq(btn) {
+    const ans = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.faq-q').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+    if (!isOpen) {
+      btn.classList.add('open');
+      ans.classList.add('open');
+    }
+  }
+
+  function copyLink() {
+    navigator.clipboard.writeText('https://randareda-droid.github.io/Bariatric-Nutrition/ep02.html')
+      .then(() => alert('✅ تم نسخ الرابط!'));
+  }
+</script>
+</body>
+</html>
