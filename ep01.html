@@ -150,6 +150,7 @@ body.en{font-family:'Lato',sans-serif;direction:ltr}
     <button class="lang-btn active" onclick="setLang('ar',this)">العربية</button>
     <button class="lang-btn" onclick="setLang('en',this)">English</button>
   </div>
+  <div id="author-credit" style="margin-top:12px; font-size:12px; font-weight:500; color:rgba(255,255,255,0.75); letter-spacing:0.3px;">إعداد: أ.د. رنده رضا مبروك</div>
 </div>
 
 <div class="tabs">
@@ -500,7 +501,7 @@ var T={
     'warn-note':'إذا أجريت جراحة Bypass أو SADI-S — المتابعة مع أخصائي تغذية متخصص في السمنة ليست خياراً. هي جزء من العلاج.',
     'sh-title':'🔗 شارك هذا الدليل','sh-sub':'للأطباء: أرسله لمرضاك قبل الجراحة أو بعدها\nلمن يفكر في الجراحة: شاركه مع عائلتك',
     'wa-lbl':'واتساب','li-lbl':'LinkedIn','cp-lbl':'نسخ الرابط',
-    disc:'هذا الدليل للتوعية العامة فقط — لا يُغني عن استشارة الطبيب المعالج والفريق الطبي المتخصص',
+    disc:'إعداد: أ.د. رنده رضا مبروك\nهذا الدليل للتوعية العامة فقط — لا يُغني عن استشارة الطبيب المعالج والفريق الطبي المتخصص',
     quiz:[
       {q:'من هو المرشح المناسب لجراحة السمنة؟',opts:['كل من يريد إنقاص الوزن','من لديه BMI فوق 35 مع أمراض مصاحبة وفشلت معه طرق أخرى','من يعاني من زيادة وزن بسيطة','من طلب الجراحة بنفسه'],ans:1,fb:'صحيح. الجراحة مخصصة لحالات السمنة المفرطة بعد فشل الأساليب التقليدية — وتتطلب تقييماً طبياً شاملاً.'},
       {q:'لماذا ينخفض الشعور بالجوع كثيراً بعد قص المعدة؟',opts:['لأن المعدة صغيرة فلا تتسع للطعام','لأن هرمون الغريلين ينخفض مع إزالة جزء من المعدة','لأن المريض يتناول أدوية للجوع','لأن الأمعاء تعمل أبطأ'],ans:1,fb:'ممتاز. هرمون الغريلين يُنتَج في الجزء الذي يُزال — لهذا يقل الجوع بشكل لافت، وليس فقط بسبب الحجم الصغير.'},
@@ -552,7 +553,7 @@ var T={
     'warn-note':'If you have had a Bypass or SADI-S — regular follow-up with a bariatric dietitian is not optional. It is part of the treatment itself.',
     'sh-title':'🔗 Share this guide','sh-sub':'For surgeons: send this to patients before or after surgery.\nFor anyone considering surgery: share it with your family.',
     'wa-lbl':'WhatsApp','li-lbl':'LinkedIn','cp-lbl':'Copy link',
-    disc:'This guide is for general awareness only — it does not replace advice from your surgeon, dietitian, or medical team.',
+    disc:'By: Professor Randa Reda Mabrouk\nThis guide is for general awareness only — it does not replace advice from your surgeon, dietitian, or medical team.',
     quiz:[
       {q:'Who is a good candidate for bariatric surgery?',opts:['Anyone who wants to lose weight','Someone with BMI above 35 with related conditions, after other methods have failed','Anyone with a little extra weight to lose','Anyone who requests the surgery themselves'],ans:1,fb:'Correct. Surgery is for severe obesity cases after conventional methods have not worked — and always requires a full medical assessment first.'},
       {q:'Why does hunger drop so dramatically after sleeve gastrectomy?',opts:['Because the stomach is small so it fills up faster','Because the ghrelin hormone falls when part of the stomach is removed','Because patients take appetite-suppressing medication','Because the intestines work more slowly'],ans:1,fb:'Excellent. Ghrelin is produced in the part of the stomach that is removed — so hunger drops significantly, not just because of the smaller size.'},
@@ -587,6 +588,8 @@ function applyT(){
   document.getElementById('what-changes-lbl').innerHTML=d['what-changes-lbl'];
   document.getElementById('what-changes').textContent=d['what-changes'];
   document.getElementById('sh-sub').innerHTML=d['sh-sub'].replace('\n','<br>');
+  document.getElementById('disc').innerHTML=d['disc'].replace('\n','<br>');
+  document.getElementById('author-credit').textContent=lang==='ar'?'إعداد: أ.د. رنده رضا مبروك':'By: Professor Randa Reda Mabrouk';
   document.getElementById('wa-link').href='https://wa.me/?text='+(lang==='ar'?'دليل جراحة السمنة: ':'Bariatric Surgery Guide: ')+'https://randareda-droid.github.io/Patient-Guide-/bariatric-ep01.html';
   renderStage();
   qIdx=0;qScore=0;answered=false;
